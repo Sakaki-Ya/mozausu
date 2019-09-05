@@ -365,7 +365,7 @@ const imgDownload = (dataURL/* , lastZoom, lastVpt */) => {
     // zoom = canvas.getZoom();
     // canvas.setZoom(lastZoom);
     // console.log(lastVpt);
-    // resize();
+    resize();
 };
 
 /**
