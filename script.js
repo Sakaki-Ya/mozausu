@@ -1,5 +1,5 @@
 const canvas = new fabric.Canvas("c");
-//fabric.textureSize = 4096;
+// fabric.textureSize = 4096;
 
 /**
  * 画像ファイル読込
@@ -17,7 +17,7 @@ $("#file").on("change", (e) => {
         $("#file")[0].value = "";
         return;
     };
-    if (imgSize > 1700000) {
+    if (imgSize > 1500000) {
         $("#overSize").show();
         $("#file")[0].value = "";
         return;
@@ -98,11 +98,6 @@ $("#select").on("click", () => {
  */
 const selectArea = () => {
     canvas.hoverCursor = "crosshair";
-    // $("canvas").awesomeCursor('pencil', {
-    //     color: 'white',
-    //     outline: 'black',
-    //     hotspot: 'bottom left'
-    // });
     mode = "add";
     canvas.on("mouse:down", down);
 };
@@ -135,6 +130,8 @@ const down = e => {
         circle = new fabric.Circle({
             left: pos.x,
             top: pos.y,
+            originX: "center",
+            originY: "center",
             fill: "rgba(0, 43, 171, 0.8)",
             radius: 4,
             selectable: false
@@ -162,6 +159,10 @@ const copyObj = () => {
     const obj = canvas.getObjects();
     const oImg = obj[0];
     oImg.clone(copy => {
+        copy.set({
+            scaleX: oImg.scaleX,
+            scaleY: oImg.scaleY
+        });
         copy.selectable = false;
         clippingObj(copy);
     });
@@ -261,11 +262,13 @@ let panning;
 let prevX;
 let prevY;
 canvas.on("mouse:down", e => {
-    panning = true;
-    if (e.e instanceof TouchEvent) {
-        const { clientX, clientY } = e.e.touches[0];
-        prevX = clientX;
-        prevY = clientY;
+    if (canvas.hoverCursor === "default") {
+        panning = true;
+        if (e.e instanceof TouchEvent) {
+            const { clientX, clientY } = e.e.touches[0];
+            prevX = clientX;
+            prevY = clientY;
+        };
     };
 });
 canvas.on("mouse:move", e => {
@@ -295,12 +298,12 @@ $("#onOff").on("click", () => {
     if (obj.length === 2) {
         const blurObj = obj[1];
         if ($("#onOff").prop("checked") == true) {
-            checkOffAnime($(".fa-power-off")[0]);
+            checkOffAnime($(".fa-eye-slash")[0]);
             blurObj.opacity = 0;
             canvas.remove(blurObj).add(blurObj).renderAll();
             return;
         };
-        checkOnAnime($(".fa-power-off")[0]);
+        checkOnAnime($(".fa-eye-slash")[0]);
         blurObj.opacity = 1;
         canvas.remove(blurObj).add(blurObj).renderAll();
     };
@@ -328,6 +331,7 @@ const clear = () => {
     checkOffAnime($(".fa-pencil-alt .fa-power-off")[0]);
     $("#value")[0].value = 0.25;
     canvas.hoverCursor = "default";
+    mode = "";
 };
 
 /**
@@ -381,8 +385,7 @@ $("#close").on("click", async () => {
 /**
  * オプションボタン両端の矢印表示制御
  */
-$("#list").scroll(() => { fixArrowVisibility(); });
-
+$("#list").scroll(() => fixArrowVisibility());
 const fixArrowVisibility = () => {
     const scrollPosition = $("#list").scrollLeft();
     const maxPostion = $('#list').get(0).scrollWidth - $('#list').get(0).clientWidth;
@@ -392,14 +395,14 @@ const fixArrowVisibility = () => {
         arrowLeftVisibility = 'hidden';
     if (scrollPosition === maxPostion)
         arrowRightVisibility = 'hidden';
-    $("#left").css("visibility", arrowLeftVisibility);
-    $("#right").css("visibility", arrowRightVisibility);
-}
+    $("#arrowLeft").css("visibility", arrowLeftVisibility);
+    $("#arrowRight").css("visibility", arrowRightVisibility);
+};
 
 /**
  * 矢印ボタン スクロール制御
  */
-$("#left").on("click", () => {
+$("#arrowLeft").on("click", () => {
     const scrollPosition = $("#list").scrollLeft();
     if (scrollPosition > 0) {
         $("#list").scrollLeft(scrollPosition - 40);
@@ -407,7 +410,7 @@ $("#left").on("click", () => {
     };
     $("#list").scrollLeft(0);
 });
-$("#right").on("click", () => {
+$("#arrowRight").on("click", () => {
     const scrollPosition = $("#list").scrollLeft();
     const maxScroll = $('#list').get(0).scrollWidth - $('#list').get(0).clientWidth;
     if (scrollPosition < maxScroll) {
