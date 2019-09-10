@@ -38,6 +38,17 @@ html
  100%
   background-position: 0% 4%
 
+button
+ background: none
+ border: 0
+ outline: none
+ -webkit-appearance: none
+ -moz-appearance: none
+ appearance: none
+
+i, a
+ line-height: 0
+
 h1
  cursor: pointer
  max-width: 550px
@@ -52,10 +63,8 @@ h1
 .fa-images
  margin: 2%
 
-.is-size-5
- font-family: 'M PLUS Rounded 1c', sans-serif
-
 #fileButton
+ font-family: 'M PLUS Rounded 1c', sans-serif
  cursor: pointer
  display: inline-flex
  justify-content: center
@@ -69,6 +78,12 @@ h1
  border: .4em solid rgba(32,156,238,.87)
  box-shadow: 0 0 .4em rgba(165,205,57,.87)
  background-color: rgba(255,140,255,.15)
+
+#fileButton:hover
+ border: solid .4em rgba(179,100,0,.87)
+
+#fileButton:hover + .fa-images
+ color: rgba(211,132,0,.87)
 
 #description
  color: rgba(255,255,255,.87)
@@ -105,39 +120,59 @@ h1
  width: 100vw
  min-height: 20vh
 
+#buttonWrap
+ display: flex
+ justify-content: center
+ padding-bottom: 1%
+
 .fas
  color: rgba(32,120,238,.87)
 
-.optButton
- cursor: pointer
+#list
+ display: -ms-inline-flexbox
  display: inline-flex
+ max-width: 65%
+ overflow-x: auto
+ overflow-y: hidden
+ -webkit-overflow-scrolling: touch
+ padding: 1%
+
+.buttons
+ margin: 0 1em
+ cursor: pointer
+ display: inline-block
+
+i.icons
+ display: -ms-flexbox
+ display: flex
+ -ms-flex-align: center
  align-items: center
- justify-content: center
- vertical-align: middle
- box-sizing: border-box
- font-size: 2em
- border-radius: 50%
+ font-size: 2.2rem
  width: 2.2em
  height: 2.2em
- margin: .5em .5em 0 .5em
+ border-radius: 50%
  border: solid .15em rgba(32,156,238,.87)
  background-color: rgba(255,140,255,.15)
  box-shadow: 0 0 .2em rgba(165,205,57,.87)
 
+i.icons::before
+ display: block
+ margin: auto
+
 .check:checked + i
  color: rgba(211,132,0,.87)
- //border: solid .15em rgba(179,100,0,.87)
+ border: solid .15em rgba(179,100,0,.87)
 
 .check:disabled + i
  color: rgba(180,180,218,.87)
- //border: solid .15em rgba(150,150,188,.87)
+ border: solid .15em rgba(150,150,188,.87)
  cursor: default
 
-#buttonWrap
- display: flex
- align-items: center
- justify-content: center
- vertical-align: middle
+// .check:checked + i + p
+//  color: rgba(211,132,0,.87)
+
+// .check:disabled + i + p
+//  color: rgba(180,180,218,.87)
 
 #left
  margin-right: 2.5%
@@ -154,17 +189,11 @@ h1
 .fa-chevron-left,.fa-chevron-right
  color: rgba(32,156,238,.87)
 
-#list
- display: flex
- max-width: 65%
- overflow-x: auto
- overflow-y: hidden
- -webkit-overflow-scrolling: touch
- padding: 1%
-
 #list p
+ font-size: 1rem
+ color: rgba(150,205,255,.87)
  margin-top: .5em
- color: rgba(255,255,255,.87)
+ white-space: nowrap
  font-family: 'M PLUS Rounded 1c', sans-serif
 
 .fa-exclamation-triangle

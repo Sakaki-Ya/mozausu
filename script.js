@@ -185,12 +185,12 @@ const clippingObj = copy => {
     const obj = canvas.getObjects();
     for (let i = 1; i < obj.length; i++)
         canvas.remove(obj[i]);
-    mode = "";
     checkOffAnime($(".fa-pencil-alt")[0]);
     checkOnAnime($(".fa-power-off")[0]);
     $("#select").prop("disabled", true);
     $("#onOff").prop("disabled", false);
     $("#value")[0].value = 0.25;
+    mode = "";
     canvas.hoverCursor = "default";
     blurObj(copy);
 };
