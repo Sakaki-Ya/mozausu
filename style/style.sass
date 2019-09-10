@@ -46,9 +46,6 @@ button
  -moz-appearance: none
  appearance: none
 
-i, a
- line-height: 0
-
 h1
  cursor: pointer
  max-width: 550px
@@ -80,10 +77,10 @@ h1
  background-color: rgba(255,140,255,.15)
 
 #fileButton:hover
- border: solid .4em rgba(179,100,0,.87)
+ border: solid .4em rgba(255,126,69,.87)
 
-#fileButton:hover + .fa-images
- color: rgba(211,132,0,.87)
+#fileButton:hover > div i
+ color: rgba(255,100,43,.87)
 
 #description
  color: rgba(255,255,255,.87)
@@ -125,7 +122,7 @@ h1
  justify-content: center
  padding-bottom: 1%
 
-.fas
+i
  color: rgba(32,120,238,.87)
 
 #list
@@ -137,10 +134,25 @@ h1
  -webkit-overflow-scrolling: touch
  padding: 1%
 
+li p
+ font-size: 1rem
+ color: rgba(150,205,255,.87)
+ margin-top: .5em
+ white-space: nowrap
+ font-family: 'M PLUS Rounded 1c', sans-serif
+
 .buttons
  margin: 0 1em
  cursor: pointer
  display: inline-block
+
+
+.buttons:hover i
+ color: rgba(255,100,43,.87)
+ border: double .2em rgba(255,126,69,.87)
+
+.buttons:hover p
+ color: rgba(255,205,150,.87)
 
 i.icons
  display: -ms-flexbox
@@ -151,7 +163,7 @@ i.icons
  width: 2.2em
  height: 2.2em
  border-radius: 50%
- border: solid .15em rgba(32,156,238,.87)
+ border: double .2em rgba(32,156,238,.87)
  background-color: rgba(255,140,255,.15)
  box-shadow: 0 0 .2em rgba(165,205,57,.87)
 
@@ -159,20 +171,23 @@ i.icons::before
  display: block
  margin: auto
 
-.check:checked + i
- color: rgba(211,132,0,.87)
- border: solid .15em rgba(179,100,0,.87)
+.check:checked + label i
+ color: rgba(255,100,43,.87)
+ border: double .2em rgba(255,126,69,.87)
+ background-color: rgba(255,126,69,.87)
 
-.check:disabled + i
+.check:disabled + label i
  color: rgba(180,180,218,.87)
- border: solid .15em rgba(150,150,188,.87)
+ border: double .2em rgba(150,150,188,.87)
+
+.check:checked + label p
+ color: rgba(255,205,150,.87)
+
+.check:disabled + label p
+ color: rgba(180,180,218,.87)
+
+.check:disabled + label
  cursor: default
-
-// .check:checked + i + p
-//  color: rgba(211,132,0,.87)
-
-// .check:disabled + i + p
-//  color: rgba(180,180,218,.87)
 
 #left
  margin-right: 2.5%
@@ -188,13 +203,6 @@ i.icons::before
 
 .fa-chevron-left,.fa-chevron-right
  color: rgba(32,156,238,.87)
-
-#list p
- font-size: 1rem
- color: rgba(150,205,255,.87)
- margin-top: .5em
- white-space: nowrap
- font-family: 'M PLUS Rounded 1c', sans-serif
 
 .fa-exclamation-triangle
  margin: 2%

@@ -31,6 +31,7 @@ $("#file").on("change", (e) => {
         viewIn();
         $("#list").scrollLeft(0);
         fixArrowVisibility();
+        $("#file")[0].value = "";
     };
     fr.readAsDataURL(e.target.files[0]);
 });

@@ -65,10 +65,6 @@ button {
   appearance: none;
 }
 
-i, a {
-  line-height: 0;
-}
-
 h1 {
   cursor: pointer;
   max-width: 550px;
@@ -104,11 +100,11 @@ h1 {
 }
 
 #fileButton:hover {
-  border: solid 0.4em rgba(179, 100, 0, 0.87);
+  border: solid 0.4em rgba(255, 126, 69, 0.87);
 }
 
-#fileButton:hover + .fa-images {
-  color: rgba(211, 132, 0, 0.87);
+#fileButton:hover > div i {
+  color: rgba(255, 100, 43, 0.87);
 }
 
 #description {
@@ -161,7 +157,7 @@ h1 {
   padding-bottom: 1%;
 }
 
-.fas {
+i {
   color: rgba(32, 120, 238, 0.87);
 }
 
@@ -175,10 +171,27 @@ h1 {
   padding: 1%;
 }
 
+li p {
+  font-size: 1rem;
+  color: rgba(150, 205, 255, 0.87);
+  margin-top: .5em;
+  white-space: nowrap;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
 .buttons {
   margin: 0 1em;
   cursor: pointer;
   display: inline-block;
+}
+
+.buttons:hover i {
+  color: rgba(255, 100, 43, 0.87);
+  border: double 0.2em rgba(255, 126, 69, 0.87);
+}
+
+.buttons:hover p {
+  color: rgba(255, 205, 150, 0.87);
 }
 
 i.icons {
@@ -190,7 +203,7 @@ i.icons {
   width: 2.2em;
   height: 2.2em;
   border-radius: 50%;
-  border: solid 0.15em rgba(32, 156, 238, 0.87);
+  border: double 0.2em rgba(32, 156, 238, 0.87);
   background-color: rgba(255, 140, 255, 0.15);
   box-shadow: 0 0 0.2em rgba(165, 205, 57, 0.87);
 }
@@ -200,14 +213,26 @@ i.icons::before {
   margin: auto;
 }
 
-.check:checked + i {
-  color: rgba(211, 132, 0, 0.87);
-  border: solid 0.15em rgba(179, 100, 0, 0.87);
+.check:checked + label i {
+  color: rgba(255, 100, 43, 0.87);
+  border: double 0.2em rgba(255, 126, 69, 0.87);
+  background-color: rgba(255, 126, 69, 0.87);
 }
 
-.check:disabled + i {
+.check:disabled + label i {
   color: rgba(180, 180, 218, 0.87);
-  border: solid 0.15em rgba(150, 150, 188, 0.87);
+  border: double 0.2em rgba(150, 150, 188, 0.87);
+}
+
+.check:checked + label p {
+  color: rgba(255, 205, 150, 0.87);
+}
+
+.check:disabled + label p {
+  color: rgba(180, 180, 218, 0.87);
+}
+
+.check:disabled + label {
   cursor: default;
 }
 
@@ -228,14 +253,6 @@ i.icons::before {
 
 .fa-chevron-left, .fa-chevron-right {
   color: rgba(32, 156, 238, 0.87);
-}
-
-#list p {
-  font-size: 1rem;
-  color: rgba(150, 205, 255, 0.87);
-  margin-top: .5em;
-  white-space: nowrap;
-  font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
 .fa-exclamation-triangle {
