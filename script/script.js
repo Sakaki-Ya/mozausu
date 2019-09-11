@@ -389,13 +389,13 @@ $("#close").on("click", async () => {
 $("#list").scroll(() => fixArrowVisibility());
 const fixArrowVisibility = () => {
     const scrollPosition = $("#list").scrollLeft();
-    const maxPostion = $('#list').get(0).scrollWidth - $('#list').get(0).clientWidth;
-    let arrowLeftVisibility = 'visible';
-    let arrowRightVisibility = 'visible';
+    const maxPostion = $("#list").get(0).scrollWidth - $("#list").get(0).clientWidth;
+    let arrowLeftVisibility = "visible";
+    let arrowRightVisibility = "visible";
     if (scrollPosition === 0)
-        arrowLeftVisibility = 'hidden';
+        arrowLeftVisibility = "hidden";
     if (scrollPosition === maxPostion)
-        arrowRightVisibility = 'hidden';
+        arrowRightVisibility = "hidden";
     $("#arrowLeft").css("visibility", arrowLeftVisibility);
     $("#arrowRight").css("visibility", arrowRightVisibility);
 };
@@ -413,7 +413,7 @@ $("#arrowLeft").on("click", () => {
 });
 $("#arrowRight").on("click", () => {
     const scrollPosition = $("#list").scrollLeft();
-    const maxScroll = $('#list').get(0).scrollWidth - $('#list').get(0).clientWidth;
+    const maxScroll = $("#list").get(0).scrollWidth - $("#list").get(0).clientWidth;
     if (scrollPosition < maxScroll) {
         $("#list").scrollLeft(scrollPosition + 40);
         return;
@@ -430,12 +430,15 @@ const viewIn = () => {
         scale: [0, 1]
     }), anime({
         targets: "#value",
-        translateX: ['500px', '0%'],
+        translateX: ["500px", "0%"],
         duration: 1200
     }), anime({
         targets: "#list li, .arrow",
-        translateY: ['500px', '0'],
+        translateY: ["500px", "0"],
         delay: anime.stagger(55)
+    }), anime({
+        targets: "#description",
+        translateX: ["1200px", "0%"]
     });
 };
 const viewOut = () => {
@@ -445,26 +448,29 @@ const viewOut = () => {
         duration: 500
     }), anime({
         targets: "#value",
-        translateX: ['0%', '1200px'],
+        translateX: ["0%", "1200px"],
         duration: 500
     }), anime({
         targets: "#list li, .arrow",
-        translateY: ['0%', '500px'],
+        translateY: ["0%", "500px"],
         delay: anime.stagger(55),
         duration: 500
+    }), anime({
+        targets: "#description",
+        translateX: ["0%", "1200px"]
     }).finished;
 };
 const checkOnAnime = (obj) => {
     anime({
         targets: obj,
-        rotateY: '1turn',
+        rotateY: "1turn",
         duration: 900
     });
 };
 const checkOffAnime = (obj) => {
     anime({
         targets: obj,
-        rotateY: '0turn',
+        rotateY: "0turn",
         duration: 900
     });
 };

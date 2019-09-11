@@ -74,6 +74,10 @@ h1 {
   margin: auto;
 }
 
+p {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
 #inInput {
   display: block;
 }
@@ -83,7 +87,6 @@ h1 {
 }
 
 #fileButton {
-  font-family: 'M PLUS Rounded 1c', sans-serif;
   cursor: pointer;
   display: inline-flex;
   justify-content: center;
@@ -109,7 +112,6 @@ h1 {
 
 #description {
   color: rgba(255, 255, 255, 0.87);
-  font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
 #description p {
@@ -176,7 +178,6 @@ li p {
   color: rgba(150, 205, 255, 0.87);
   margin-top: .5em;
   white-space: nowrap;
-  font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
 .buttons {
@@ -214,14 +215,15 @@ i.icons::before {
 }
 
 .check:checked + label i {
-  color: rgba(255, 100, 43, 0.87);
-  border: double 0.2em rgba(255, 126, 69, 0.87);
-  background-color: rgba(255, 126, 69, 0.87);
+  color: rgba(255, 205, 150, 0.87);
+  border: double 0.2em rgba(255, 205, 150, 0.87);
+  background-color: rgba(255, 100, 43, 0.87);
 }
 
 .check:disabled + label i {
   color: rgba(180, 180, 218, 0.87);
   border: double 0.2em rgba(150, 150, 188, 0.87);
+  background-color: rgba(100, 100, 148, 0.87);
 }
 
 .check:checked + label p {

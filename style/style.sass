@@ -54,6 +54,9 @@ h1
  opacity: .87
  margin: auto
 
+p
+ font-family: 'M PLUS Rounded 1c', sans-serif
+
 #inInput
  display: block
 
@@ -61,7 +64,6 @@ h1
  margin: 2%
 
 #fileButton
- font-family: 'M PLUS Rounded 1c', sans-serif
  cursor: pointer
  display: inline-flex
  justify-content: center
@@ -84,7 +86,6 @@ h1
 
 #description
  color: rgba(255,255,255,.87)
- font-family: 'M PLUS Rounded 1c', sans-serif
  p
   text-align: left
   display: inline-block
@@ -139,13 +140,11 @@ li p
  color: rgba(150,205,255,.87)
  margin-top: .5em
  white-space: nowrap
- font-family: 'M PLUS Rounded 1c', sans-serif
 
 .buttons
  margin: 0 1em
  cursor: pointer
  display: inline-block
-
 
 .buttons:hover i
  color: rgba(255,100,43,.87)
@@ -172,13 +171,16 @@ i.icons::before
  margin: auto
 
 .check:checked + label i
- color: rgba(255,100,43,.87)
- border: double .2em rgba(255,126,69,.87)
- background-color: rgba(255,126,69,.87)
+ color: rgba(255,205,150,.87)
+ border: double .2em rgba(255,205,150,.87)
+ background-color: rgba(255,100,43,.87)
 
 .check:disabled + label i
  color: rgba(180,180,218,.87)
  border: double .2em rgba(150,150,188,.87)
+ background-color: rgba(100,100,148,.87)
+ //color: rgba(180,180,218,.87)
+ //border: double .2em rgba(150,150,188,.87)
 
 .check:checked + label p
  color: rgba(255,205,150,.87)
