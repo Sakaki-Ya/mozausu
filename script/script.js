@@ -192,7 +192,7 @@ const clippingObj = copy => {
     $("#onOff").prop("disabled", false);
     $("#value")[0].value = 0.25;
     mode = "";
-    canvas.hoverCursor = "default";
+    canvas.hoverCursor = "all-scroll";
     blurObj(copy);
 };
 
@@ -235,7 +235,7 @@ const reset = () => {
     $("#select").prop("checked", false);
     $("#onOff").prop("disabled", true);
     $("#onOff").prop("checked", false);
-    canvas.hoverCursor = "default";
+    canvas.hoverCursor = "all-scroll";
     mode = "";
 };
 
@@ -263,7 +263,7 @@ let panning;
 let prevX;
 let prevY;
 canvas.on("mouse:down", e => {
-    if (canvas.hoverCursor === "default") {
+    if (canvas.hoverCursor === "all-scroll") {
         panning = true;
         if (e.e instanceof TouchEvent) {
             const { clientX, clientY } = e.e.touches[0];
@@ -331,7 +331,7 @@ const clear = () => {
     $("#onOff").prop("checked", false);
     checkOffAnime($(".fa-pencil-alt .fa-power-off")[0]);
     $("#value")[0].value = 0.25;
-    canvas.hoverCursor = "default";
+    canvas.hoverCursor = "all-scroll";
     mode = "";
 };
 
