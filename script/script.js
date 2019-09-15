@@ -86,7 +86,7 @@ const resize = () => {
 /**
  * ブラー適用選択指定ツール起動
  */
-$("#select").on("click touchend", () => {
+$("#select").on("click", () => {
     if ($("#select").prop("checked")) {
         checkOnAnime($(".fa-pencil-alt")[0]);
         selectArea();
@@ -142,8 +142,10 @@ const down = e => {
         });
         canvas.add(circle);
     };
-    if (mode === "edit")
+    if (mode === "edit") {
         canvas.on("mouse:dblclick", copyObj);
+        $("canvas").hammer().on("doubletap", copyObj);
+    };
 };
 const move = e => {
     if (mode == "edit") {
@@ -233,6 +235,7 @@ const blurValue = (copy, value) => {
 const reset = () => {
     canvas.clear();
     canvas.off("mouse:down", down).off("mouse:move", move).off("mouse:dblclick", copyObj);
+    $("canvas").hammer().off("doubletap", copyObj);
     $("#value").off("input", slide);
     zoom = 1;
     canvas.setZoom(zoom);
@@ -320,12 +323,13 @@ $("#onOff").on("click", () => {
 /**
  * ストロークとブラーオブジェクトをクリア
  */
-$("#clear").on("click touchend", () => clear());
+$("#clear").on("click", () => clear());
 const clear = async () => {
     const obj = canvas.getObjects();
     const oImg = obj[0];
     canvas.clear();
     canvas.off("mouse:down", down).off("mouse:move", move).off("mouse:dblclick", copyObj);
+    $("canvas").hammer().off("doubletap", copyObj);
     $("#value").off("input", slide);
     canvas.add(oImg).renderAll();
     oImg.selectable = false;
@@ -389,7 +393,7 @@ const imgDownload = (dataURL/* , lastZoom, lastVpt */) => {
 /**
  * キャンバスを閉じる
  */
-$("#close").on("click touchend", () => {
+$("#close").on("click", () => {
     viewOut();
     $("#view").fadeOut(700);
     $("#file")[0].value = "";
@@ -417,7 +421,7 @@ const fixArrowVisibility = () => {
 /**
  * 矢印ボタン スクロール制御
  */
-$("#arrowLeft").on("click touchend", () => {
+$("#arrowLeft").on("click", () => {
     const scrollPosition = $("#list").scrollLeft();
     if (scrollPosition > 0) {
         $("#list").scrollLeft(scrollPosition - 40);
@@ -425,7 +429,7 @@ $("#arrowLeft").on("click touchend", () => {
     };
     $("#list").scrollLeft(0);
 });
-$("#arrowRight").on("click touchend", () => {
+$("#arrowRight").on("click", () => {
     const scrollPosition = $("#list").scrollLeft();
     const maxScroll = $("#list").get(0).scrollWidth - $("#list").get(0).clientWidth;
     if (scrollPosition < maxScroll) {
@@ -439,19 +443,19 @@ $("#arrowRight").on("click touchend", () => {
 * モーダルウィンドウ
 */
 let modal = 0;
-$("#howtoBtn").on("click touchend", () => {
+$("#howtoBtn").on("click", () => {
     $("body").attr("id", "inModal");
     $("#howto").show();
     modalIn($("#howto")[0]);
     modal = 1;
 });
-$("#policyBtn").on("click touchend", () => {
+$("#policyBtn").on("click", () => {
     $("body").attr("id", "inModal");
     $("#policy").show();
     modalIn($("#policy")[0]);
     modal = 1;
 });
-$(".modalClose").on("click touchend", () => {
+$(".modalClose").on("click", () => {
     if ($("#howto").is(":visible")) {
         modalOut($("#howto")[0]);
         $("#howto").fadeOut(400);
@@ -463,7 +467,7 @@ $(".modalClose").on("click touchend", () => {
     $("body").removeAttr("id", "inModal");
     modal = 0;
 });
-$(document).on("click touchend", e => {
+$(document).on("click", e => {
     if ($(e.target).closest(".modals").length) return;
     modal += 1;
     if (modal === 3) {
@@ -561,9 +565,9 @@ const modalOut = obj => {
 /**
 * リップルエフェクト
 */
-$("#fileButton").on("click touchend", () => {
+$("#fileButton").on("click", () => {
     $("#fileButton").ripple();
 });
-$(".icons").on("click touchend", () => {
+$(".icons").on("click", () => {
     $(".icons").ripple();
 });
