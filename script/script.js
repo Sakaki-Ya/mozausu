@@ -86,7 +86,7 @@ const resize = () => {
 /**
  * ブラー適用選択指定ツール起動
  */
-$("#select").on("click", () => {
+$("#select").on("click touchend", () => {
     if ($("#select").prop("checked")) {
         checkOnAnime($(".fa-pencil-alt")[0]);
         selectArea();
@@ -320,7 +320,7 @@ $("#onOff").on("click", () => {
 /**
  * ストロークとブラーオブジェクトをクリア
  */
-$("#clear").on("click", () => clear());
+$("#clear").on("click touchend", () => clear());
 const clear = async () => {
     const obj = canvas.getObjects();
     const oImg = obj[0];
