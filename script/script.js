@@ -7,7 +7,7 @@ const canvas = new fabric.Canvas("c");
  */
 let imgType;
 $("#file").on("change", (e) => {
-    $("#view, #notImg, #overSize").hide();
+    $("#view, #notImg, #overSize, #footer").hide();
     reset();
     const file = e.target.files;
     const fileType = file[0].type;
@@ -31,7 +31,8 @@ $("#file").on("change", (e) => {
         viewIn();
         $("#list").scrollLeft(0);
         fixArrowVisibility();
-        $("#file")[0].value = "";
+        const optHeight = $("#optPanel").outerHeight();
+        $("#cnvArea").css("padding-bottom", optHeight);
     };
     fr.readAsDataURL(e.target.files[0]);
 });
@@ -77,6 +78,8 @@ const resize = () => {
             canvas.setHeight(obj[i].height * resizeScale);
         };
         fixArrowVisibility();
+        const optHeight = $("#optPanel").outerHeight();
+        $("#cnvArea").css("padding-bottom", optHeight);
     };
 };
 
@@ -187,12 +190,14 @@ const clippingObj = copy => {
     for (let i = 1; i < obj.length; i++)
         canvas.remove(obj[i]);
     checkOffAnime($(".fa-pencil-alt")[0]);
-    checkOnAnime($(".fa-power-off")[0]);
+    checkOnAnime($(".fa-eye-slash")[0]);
     $("#select").prop("disabled", true);
     $("#onOff").prop("disabled", false);
     $("#value")[0].value = 0.25;
     mode = "";
     canvas.hoverCursor = "all-scroll";
+    $(".valueItem").show();
+    valueIn();
     blurObj(copy);
 };
 
@@ -200,7 +205,9 @@ const clippingObj = copy => {
  * 切り抜いた画像オブジェクトにブラーを適用
  */
 const blurObj = copy => {
-    filter = new fabric.Image.filters.Blur({ blur: parseFloat($("#value").val()) });
+    const filter = new fabric.Image.filters.Blur({
+        blur: parseFloat($("#value").val())
+    });
     copy.filters.push(filter);
     copy.applyFilters();
     canvas.add(copy).renderAll();
@@ -314,7 +321,7 @@ $("#onOff").on("click", () => {
  * ストロークとブラーオブジェクトをクリア
  */
 $("#clear").on("click", () => clear());
-const clear = () => {
+const clear = async () => {
     const obj = canvas.getObjects();
     const oImg = obj[0];
     canvas.clear();
@@ -329,7 +336,12 @@ const clear = () => {
     $("#select").prop("checked", false);
     $("#onOff").prop("disabled", true);
     $("#onOff").prop("checked", false);
-    checkOffAnime($(".fa-pencil-alt .fa-power-off")[0]);
+    checkOffAnime($(".fa-pencil-alt")[0]);
+    checkOffAnime($(".fa-eye-slash")[0]);
+    if ($(".valueItem").is(":visible")) {
+        await valueOut();
+        $(".valueItem").hide();
+    };
     $("#value")[0].value = 0.25;
     canvas.hoverCursor = "all-scroll";
     mode = "";
@@ -376,11 +388,12 @@ const imgDownload = (dataURL/* , lastZoom, lastVpt */) => {
 /**
  * キャンバスを閉じる
  */
-$("#close").on("click", async () => {
-    await viewOut();
-    $("#view").hide();
+$("#close").on("click", () => {
+    viewOut();
+    $("#view").fadeOut(700);
     $("#file")[0].value = "";
     reset();
+    $("#footer").fadeIn(700);
 });
 
 /**
@@ -422,16 +435,57 @@ $("#arrowRight").on("click", () => {
 });
 
 /**
+* モーダルウィンドウ
+*/
+let modal = 0;
+$("#howtoBtn").on("click", () => {
+    $("body").attr("id", "inModal");
+    $("#howto").show();
+    modalIn($("#howto")[0]);
+    modal = 1;
+});
+$("#policyBtn").on("click", () => {
+    $("body").attr("id", "inModal");
+    $("#policy").show();
+    modalIn($("#policy")[0]);
+    modal = 1;
+});
+$(".modalClose").on("click", () => {
+    if ($("#howto").is(":visible")) {
+        modalOut($("#howto")[0]);
+        $("#howto").fadeOut(400);
+    };
+    if ($("#policy").is(":visible")) {
+        modalOut($("#policy")[0]);
+        $("#policy").fadeOut(400);
+    };
+    $("body").removeAttr("id", "inModal");
+    modal = 0;
+});
+$(document).on("click touchend", e => {
+    if ($(e.target).closest(".modals").length) return;
+    modal += 1;
+    if (modal === 3) {
+        if ($("#howto").is(":visible")) {
+            modalOut($("#howto")[0]);
+            $("#howto").fadeOut(400);
+        };
+        if ($("#policy").is(":visible")) {
+            modalOut($("#policy")[0]);
+            $("#policy").fadeOut(400);
+        };
+        $("body").removeAttr("id", "inModal");
+        modal = 0;
+    };
+});
+
+/**
 * モーショングラフィックス
 */
 const viewIn = () => {
     anime({
         targets: "#c",
         scale: [0, 1]
-    }), anime({
-        targets: "#value",
-        translateX: ["500px", "0%"],
-        duration: 1200
     }), anime({
         targets: "#list li, .arrow",
         translateY: ["500px", "0"],
@@ -441,13 +495,27 @@ const viewIn = () => {
         translateX: ["1200px", "0%"]
     });
 };
-const viewOut = () => {
+const valueIn = () => {
+    anime({
+        targets: ".valueItem",
+        translateX: ["500px", "0%"],
+        duration: 1200
+    });
+};
+const valueOut = () => {
     return anime({
+        targets: ".valueItem",
+        translateX: ["0%", "1200px"],
+        duration: 900
+    }).finished;
+};
+const viewOut = () => {
+    anime({
         targets: "#c",
         scale: [1, 0],
         duration: 500
     }), anime({
-        targets: "#value",
+        targets: ".valueItem",
         translateX: ["0%", "1200px"],
         duration: 500
     }), anime({
@@ -457,20 +525,44 @@ const viewOut = () => {
         duration: 500
     }), anime({
         targets: "#description",
-        translateX: ["0%", "1200px"]
-    }).finished;
+        translateX: ["0%", "1200px"],
+        duration: 500
+    });
 };
-const checkOnAnime = (obj) => {
+const checkOnAnime = obj => {
     anime({
         targets: obj,
         rotateY: "1turn",
         duration: 900
     });
 };
-const checkOffAnime = (obj) => {
+const checkOffAnime = obj => {
     anime({
         targets: obj,
         rotateY: "0turn",
         duration: 900
     });
 };
+const modalIn = obj => {
+    anime({
+        targets: obj,
+        translateY: ["500px", "0%"],
+    });
+};
+const modalOut = obj => {
+    anime({
+        targets: obj,
+        translateY: ["0%", "500px"],
+        duration: 900
+    });
+};
+
+/**
+* リップルエフェクト
+*/
+$("#fileButton").on("click", () => {
+    $("#fileButton").ripple();
+});
+$(".icons").on("click", () => {
+    $(".icons").ripple();
+});

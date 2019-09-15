@@ -49,16 +49,23 @@ button
 button, input, label
  cursor: pointer
 
-h1
- cursor: pointer
+svg
+ filter: drop-shadow(0 0 .2em rgba(165,205,57,.87))
  max-width: 450px
  width: 100%
  height: 50%
  opacity: .87
  margin: auto
 
+.svgBlue
+ fill: rgba(0,177,235,.87)
+
+.svgBlue:hover
+ fill: rgba(150,255,255,.87)
+
 p, button
  font-family: 'M PLUS Rounded 1c', sans-serif
+ font-weight: 500
 
 #inInput
  display: block
@@ -76,48 +83,45 @@ p, button
  max-width: 350px
  max-height: 200px
  width: 100%
- margin: 3% 0
  padding: 3%
- border: .4em solid rgba(32,156,238,.87)
+ border: .4em solid rgba(0,177,235,.87)
  box-shadow: 0 0 .4em rgba(165,205,57,.87)
  background-color: rgba(255,140,255,.15)
 
 #fileButton:hover
  border: solid .4em rgba(255,126,69,.87)
-
-#fileButton:hover > div i
- color: rgba(255,100,43,.87)
+ > div i
+  color: rgba(255,100,43,.87)
 
 #fileButton:active
- border: solid .4em LightSkyBlue
-
-#fileButton:active > div i
- color: LightSkyBlue
+ border: solid .4em rgba(135,206,250,87)
+ > div i
+  color: rgba(135,190,235,.87)
 
 #description
  color: rgba(255,255,255,.87)
- p
-  text-align: left
-  display: inline-block
+ margin: 4% 0
+ line-height: 2em
 
 .canvas-container
  margin: auto
 
 #c
- //border: 1em solid rgba(32,100,158,.87)
  box-shadow: 0 0 .6em rgba(32,156,238,1),0 0 .8em rgba(165,205,57,.87)
 
-#cnvArea
- padding-bottom: 25vh
+#valueArea
+ padding: 0 2%
+ p
+  color: rgba(150,255,255,.87)
+
+.valueItem
+ margin: 0
 
 #value
  width: 65%
- box-shadow: 0 0 .4em rgba(165,205,57,.87)
+ filter: drop-shadow(0 0 .2em rgba(165,205,57,.87))
 
-#dl
- color: rgba(32,156,238,.87)
-
-#file,#view,#select,#onOff,#notImg,#overSize
+#file,#view,.valueItem,#select,#onOff,#notImg,#overSize,#howto,#policy
  display: none
 
 #optPanel
@@ -125,7 +129,6 @@ p, button
  bottom: 0
  left: 0
  width: 100vw
- min-height: 20vh
 
 #buttonWrap
  display: flex
@@ -133,7 +136,7 @@ p, button
  padding-bottom: 1%
 
 i
- color: rgba(32,120,238,.87)
+ color: rgba(0,157,215,.87)
 
 #list
  display: -ms-inline-flexbox
@@ -146,7 +149,7 @@ i
 
 li p
  font-size: 1rem
- color: rgba(150,205,255,.87)
+ color: rgba(150,255,255,.87)
  margin-top: .5em
  white-space: nowrap
 
@@ -154,19 +157,19 @@ li p
  margin: 0 1em
  display: inline-block
 
-.buttons:hover i
- color: rgba(255,100,43,.87)
- border: double .2em rgba(255,126,69,.87)
+.buttons:hover
+ i
+  color: rgba(255,100,43,.87)
+  border: double .2em rgba(255,126,69,.87)
+ p
+  color: rgba(255,205,150,.87)
 
-.buttons:hover p
- color: rgba(255,205,150,.87)
-
-.buttons:active i
- color: LightSkyBlue
- border: double .2em LightSkyBlue
-
-.buttons:active p
- color: LightSkyBlue
+.buttons:active
+ i
+  color: rgba(135,206,250,87)
+  border: double .2em rgba(135,190,235,.87)
+ p
+  color: rgba(200,255,255,.87)
 
 i.icons
  display: -ms-flexbox
@@ -177,7 +180,7 @@ i.icons
  width: 2.2em
  height: 2.2em
  border-radius: 50%
- border: double .2em rgba(32,156,238,.87)
+ border: double .2em rgba(0,157,215,.87)
  background-color: rgba(255,140,255,.15)
  box-shadow: 0 0 .2em rgba(165,205,57,.87)
 
@@ -185,23 +188,22 @@ i.icons::before
  display: block
  margin: auto
 
-.check:checked + label i
- color: rgba(255,205,150,.87)
- border: solid .1em rgba(255,205,150,.87)
- background-color: rgba(255,100,43,.87)
+.check:checked + label
+ i
+  color: rgba(255,205,150,.87)
+  border: solid .1em rgba(255,205,150,.87)
+  background-color: rgba(255,100,43,.87)
+ p
+  color: rgba(255,205,150,.87)
 
-.check:disabled + label i
- color: rgba(180,180,218,.87)
- border: double .2em rgba(150,150,188,.87)
- background-color: rgba(100,100,148,.87)
- //color: rgba(180,180,218,.87)
- //border: double .2em rgba(150,150,188,.87)
-
-.check:checked + label p
- color: rgba(255,205,150,.87)
-
-.check:disabled + label p
- color: rgba(180,180,218,.87)
+.check:disabled + label
+ i
+  color: rgba(30,60,70,.87)
+  border: double .2em rgba(60,90,100,.87)
+  background-color: rgba(30,30,58,.87)
+  box-shadow: 0 0 0 rgba(0,0,0,0)
+ p
+  color: rgba(70,125,125,.87)
 
 .check:disabled + label
  cursor: default
@@ -224,8 +226,64 @@ i.icons::before
 .fa-exclamation-triangle
  margin: 2%
 
-#footer button, p
- color: rgba(255,255,255,.87)
+#footer
+ margin: 2%
+ font-family: 'M PLUS 1p', sans-serif
+ button, p
+  margin: .7%
+  font-weight: 400
+  color: rgba(255,255,255,.87)
+ button
+  font-size: 1em
+  color: rgba(150,255,255,.87)
+ p
+  font-size: .9em
+ button:hover
+  color: rgba(255,205,150,.87)
 
-#footer button
- font-size: 1.2em
+body#inModal .container
+ pointer-events: none
+ transition: all .2s ease-out
+ -webkit-filter: blur(8px)
+ -moz-filter: blur(8px)
+ -ms-filter: blur(8px)
+ filter: blur(8px)
+
+#modalArea
+ position: absolute
+ display: flex
+ top: 50vh
+ left: 50vw
+ transform: translate(-50%, -50%)
+
+.modals
+ color: rgba(255,255,255,.87)
+ background-color: rgba(18,18,18,.87)
+ box-shadow: 0 0 .6em rgba(32,156,238,1),0 0 .8em rgba(165,205,57,.87)
+ width: 80vw
+ padding-bottom: 5%
+
+.modals h2
+ font-weight: 700
+ font-size: 1.3em
+ background-color: rgba(0,177,235,.87)
+ width: 100%
+ padding: 2%
+
+.modalTxt
+ font-weight: 400
+ line-height: 2em
+ padding: 5% 5% 0 5%
+
+.modalClose
+ color: rgba(255,255,255,.87)
+ display: flex
+ align-items: center
+ margin: auto
+ margin-top: 2.5%
+ white-space: nowrap
+
+.modalClose i
+ color: rgba(255,255,255,.87)
+ font-size: 1.5em
+ margin-right: 10%
