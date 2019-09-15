@@ -462,7 +462,7 @@ $(".modalClose").on("click", () => {
     $("body").removeAttr("id", "inModal");
     modal = 0;
 });
-$(document).on("click touchend", e => {
+$(document).on("click", e => {
     if ($(e.target).closest(".modals").length) return;
     modal += 1;
     if (modal === 3) {
