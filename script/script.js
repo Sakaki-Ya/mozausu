@@ -353,7 +353,8 @@ const clear = async () => {
 $("#dl").on("click", () => {
     // const lastZoom = canvas.getZoom()
     // const lastVpt = canvas.getVpCenter();
-    canvas.setZoom(1);
+    zoom = 1;
+    canvas.setZoom(zoom);
     canvas.setViewportTransform([1, 0, 0, 1, 0, 0]);
     const obj = canvas.getObjects();
     const oImg = obj[0];
@@ -388,7 +389,7 @@ const imgDownload = (dataURL/* , lastZoom, lastVpt */) => {
 /**
  * キャンバスを閉じる
  */
-$("#close").on("click", () => {
+$("#close").on("click touchend", () => {
     viewOut();
     $("#view").fadeOut(700);
     $("#file")[0].value = "";
@@ -416,7 +417,7 @@ const fixArrowVisibility = () => {
 /**
  * 矢印ボタン スクロール制御
  */
-$("#arrowLeft").on("click", () => {
+$("#arrowLeft").on("click touchend", () => {
     const scrollPosition = $("#list").scrollLeft();
     if (scrollPosition > 0) {
         $("#list").scrollLeft(scrollPosition - 40);
@@ -424,7 +425,7 @@ $("#arrowLeft").on("click", () => {
     };
     $("#list").scrollLeft(0);
 });
-$("#arrowRight").on("click", () => {
+$("#arrowRight").on("click touchend", () => {
     const scrollPosition = $("#list").scrollLeft();
     const maxScroll = $("#list").get(0).scrollWidth - $("#list").get(0).clientWidth;
     if (scrollPosition < maxScroll) {
@@ -438,19 +439,19 @@ $("#arrowRight").on("click", () => {
 * モーダルウィンドウ
 */
 let modal = 0;
-$("#howtoBtn").on("click", () => {
+$("#howtoBtn").on("click touchend", () => {
     $("body").attr("id", "inModal");
     $("#howto").show();
     modalIn($("#howto")[0]);
     modal = 1;
 });
-$("#policyBtn").on("click", () => {
+$("#policyBtn").on("click touchend", () => {
     $("body").attr("id", "inModal");
     $("#policy").show();
     modalIn($("#policy")[0]);
     modal = 1;
 });
-$(".modalClose").on("click", () => {
+$(".modalClose").on("click touchend", () => {
     if ($("#howto").is(":visible")) {
         modalOut($("#howto")[0]);
         $("#howto").fadeOut(400);
@@ -462,7 +463,7 @@ $(".modalClose").on("click", () => {
     $("body").removeAttr("id", "inModal");
     modal = 0;
 });
-$(document).on("click", e => {
+$(document).on("click touchend", e => {
     if ($(e.target).closest(".modals").length) return;
     modal += 1;
     if (modal === 3) {
@@ -560,9 +561,9 @@ const modalOut = obj => {
 /**
 * リップルエフェクト
 */
-$("#fileButton").on("click", () => {
+$("#fileButton").on("click touchend", () => {
     $("#fileButton").ripple();
 });
-$(".icons").on("click", () => {
+$(".icons").on("click touchend", () => {
     $(".icons").ripple();
 });
