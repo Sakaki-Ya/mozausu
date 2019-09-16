@@ -74,6 +74,7 @@
                     <p class="is-size-5 has-text-white-bis">モザイクをウスクしたい画像を選択してください。</p>
                 </div>
             </label>
+            <!-- view -->
             <div class="block" id="view">
                 <div id="description">
                     <p>「範囲指定」を押して、ウスクしたい範囲をクリックして囲ってください。</p>
@@ -159,34 +160,31 @@
     <div id="modalArea">
         <div class="modals" id="howto">
             <h2 class="has-text-centered">モザウスの使い方</h2>
-            <div class="modalTxt">
-                <p>を押して、モザイクをウスクしたい画像をアップロードします。</p>
-                <p>画像の上を押すと、押した位置に点が表示されます。ウスクしたい範囲を点で囲いましょう。</p>
-                <small>やを押すことで、画像の表示サイズを変えられます。</small>
-                <small>また、画像をドラッグすることで画像の表示位置を変えられます。</small>
-                <p>ウスクしたい範囲が定まったら、最後の点を打つ際にダブルクリック（ダブルタップ）をしましょう。</p>
-                <p>すると、指定した範囲内にボカシがかかります。</p>
-                <button class="modalClose"><i class="far fa-times-circle"></i>閉じる</button>
+            <div id="video">
+                <iframe width="560" height="315" src="" frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" showinfo=0></iframe>
             </div>
+            <button class="modalClose"><i class="far fa-times-circle"></i>閉じる</button>
         </div>
         <div class="modals" id="policy">
-            <h2 class="has-text-centered">アクセス解析ツール</h2>
-            <div class="modalTxt">
+            <h2 class="has-text-centered">ポリシー</h2>
+            <div id="modalTxt">
+                <h3>アクセス解析ツール</h3>
                 <p>モザウスはGoogleAnalyticsを利用しトラフィックデータを収集するためにCookieを使用しています。</p>
                 <p>トラフィックデータは匿名で収集されており、個人を特定するものではありません。</p>
                 <button class="modalClose"><i class="far fa-times-circle"></i>閉じる</button>
             </div>
         </div>
-        <!-- script -->
-        <script src="/script/jquery.js"></script>
-        <script src="/script/hammer.js"></script>
-        <script src="/script/jqHammer.js"></script>
-        <script src="/script/anime.min.js"></script>
-        <script src="/script/fabric.js"></script>
-        <script src="/script/fontawesome.js"></script>
-        <link rel="stylesheet" href="/style/ripple.css">
-        <script src="/script/ripple.js"></script>
-        <script src="/script/script.js"></script>
+    </div>
+    <!-- script -->
+    <script src="/script/jquery.js"></script>
+    <script src="/script/doubletap.js"></script>
+    <script src="/script/anime.min.js"></script>
+    <script src="/script/fabric.js"></script>
+    <script src="/script/fontawesome.js"></script>
+    <link rel="stylesheet" href="/style/ripple.css">
+    <script src="/script/ripple.js"></script>
+    <script src="/script/script.js"></script>
 </body>
 
 </html>

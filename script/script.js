@@ -115,7 +115,7 @@ const down = e => {
             left: pos.x,
             top: pos.y,
             fill: false,
-            stroke: "rgba(0, 115, 239, 0.8)",
+            stroke: "rgba(0,177,235,.87)",
             strokeWidth: 2,
             objectCaching: false
         });
@@ -136,7 +136,7 @@ const down = e => {
             top: pos.y,
             originX: "center",
             originY: "center",
-            fill: "rgba(0, 43, 171, 0.8)",
+            fill: "rgba(0,87,145,.87)",
             radius: 4,
             selectable: false
         });
@@ -144,7 +144,7 @@ const down = e => {
     };
     if (mode === "edit") {
         canvas.on("mouse:dblclick", copyObj);
-        $("canvas").hammer().on("doubletap", copyObj);
+        $("canvas").on('doubletap', copyObj);
     };
 };
 const move = e => {
@@ -235,7 +235,7 @@ const blurValue = (copy, value) => {
 const reset = () => {
     canvas.clear();
     canvas.off("mouse:down", down).off("mouse:move", move).off("mouse:dblclick", copyObj);
-    $("canvas").hammer().off("doubletap", copyObj);
+    $("canvas").off('doubletap', copyObj);
     $("#value").off("input", slide);
     zoom = 1;
     canvas.setZoom(zoom);
@@ -329,7 +329,7 @@ const clear = async () => {
     const oImg = obj[0];
     canvas.clear();
     canvas.off("mouse:down", down).off("mouse:move", move).off("mouse:dblclick", copyObj);
-    $("canvas").hammer().off("doubletap", copyObj);
+    $("canvas").off('doubletap', copyObj);
     $("#value").off("input", slide);
     canvas.add(oImg).renderAll();
     oImg.selectable = false;
@@ -444,52 +444,50 @@ $("#arrowRight").on("click", () => {
 */
 let modal = 0;
 $("#howtoBtn").on("click", () => {
-    $("body").attr("id", "inModal");
+    $("#video").children("iframe").prop("src", "https://www.youtube.com/embed/lnz3_87nbqM");
+    $("body").prop("id", "inModal");
     $("#howto").show();
     modalIn($("#howto")[0]);
     modal = 1;
 });
 $("#policyBtn").on("click", () => {
-    $("body").attr("id", "inModal");
+    $("body").prop("id", "inModal");
     $("#policy").show();
     modalIn($("#policy")[0]);
     modal = 1;
 });
 $(".modalClose").on("click", () => {
-    if ($("#howto").is(":visible")) {
-        modalOut($("#howto")[0]);
-        $("#howto").fadeOut(400);
-    };
-    if ($("#policy").is(":visible")) {
-        modalOut($("#policy")[0]);
-        $("#policy").fadeOut(400);
-    };
-    $("body").removeAttr("id", "inModal");
-    modal = 0;
+    if ($("#howto").is(":visible")) closeHowto();
+    if ($("#policy").is(":visible")) closePolicy();
 });
-$(document).on("click", e => {
+$(window).on("click", e => {
     if ($(e.target).closest(".modals").length) return;
     modal += 1;
     if (modal === 3) {
-        if ($("#howto").is(":visible")) {
-            modalOut($("#howto")[0]);
-            $("#howto").fadeOut(400);
-        };
-        if ($("#policy").is(":visible")) {
-            modalOut($("#policy")[0]);
-            $("#policy").fadeOut(400);
-        };
-        $("body").removeAttr("id", "inModal");
-        modal = 0;
+        if ($("#howto").is(":visible")) closeHowto();
+        if ($("#policy").is(":visible")) closePolicy();
     };
 });
+const closeHowto = () => {
+    modalOut($("#howto")[0]);
+    $("#howto").fadeOut(400);
+    $("#video").children("iframe").prop("src", "");
+    $("body").removeAttr("id", "inModal");
+    modal = 0;
+};
+const closePolicy = () => {
+    modalOut($("#policy")[0]);
+    $("#policy").fadeOut(400);
+    $("body").removeAttr("id", "inModal");
+    modal = 0;
+};
 
 /**
 * モーショングラフィックス
 */
 const viewIn = () => {
     anime({
-        targets: "#c",
+        targets: "canvas",
         scale: [0, 1]
     }), anime({
         targets: "#list li, .arrow",
@@ -516,7 +514,7 @@ const valueOut = () => {
 };
 const viewOut = () => {
     anime({
-        targets: "#c",
+        targets: "canvas",
         scale: [1, 0],
         duration: 500
     }), anime({

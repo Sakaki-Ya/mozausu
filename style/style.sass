@@ -136,7 +136,7 @@ p, button
  padding-bottom: 1%
 
 i
- color: rgba(0,157,215,.87)
+ color: rgba(0,127,185,.87)
 
 #list
  display: -ms-inline-flexbox
@@ -258,7 +258,7 @@ body#inModal .container
 
 .modals
  color: rgba(255,255,255,.87)
- background-color: rgba(18,18,18,.87)
+ background-color: rgba(18,18,18,.77)
  box-shadow: 0 0 .6em rgba(32,156,238,1),0 0 .8em rgba(165,205,57,.87)
  width: 80vw
  padding-bottom: 5%
@@ -270,13 +270,13 @@ body#inModal .container
  width: 100%
  padding: 2%
 
-.modalTxt
+#modalTxt
  font-weight: 400
  line-height: 2em
  padding: 5% 5% 0 5%
 
 .modalClose
- color: rgba(255,255,255,.87)
+ color: rgba(150,255,255,.87)
  display: flex
  align-items: center
  margin: auto
@@ -284,6 +284,29 @@ body#inModal .container
  white-space: nowrap
 
 .modalClose i
- color: rgba(255,255,255,.87)
+ color: rgba(0,207,235,.87)
  font-size: 1.5em
  margin-right: 10%
+
+.modalClose:hover
+ color: rgba(255,205,150,.87)
+ i
+  color: rgba(255,100,43,.87)
+
+// #video
+//  padding: 5% 5% 0 5%
+//  display: flex
+//  margin: auto
+
+#video
+ position: relative
+ margin: auto
+ width: 80%
+ margin-top: 5%
+ padding-top: 56.25%
+ iframe
+  position: absolute
+  top: 0
+  right: 0
+  width: 100%
+  height: 100%
