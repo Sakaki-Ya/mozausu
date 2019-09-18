@@ -6,7 +6,7 @@ const canvas = new fabric.Canvas("c");
  * 参考コード https://b.0218.jp/20150119133328.html
  */
 let imgType;
-$("#file").on("change", (e) => {
+$("#file").on("change", e => {
     $("#view, #notImg, #overSize, #footer").hide();
     reset();
     const file = e.target.files;
@@ -104,6 +104,8 @@ const selectArea = () => {
     canvas.hoverCursor = "crosshair";
     mode = "add";
     canvas.on("mouse:down", down);
+    canvas.on("mouse:dblclick", copyObj);
+    $("canvas").on("doubletap", copyObj);
 };
 const down = e => {
     const pos = canvas.getPointer(e);
@@ -141,10 +143,6 @@ const down = e => {
             selectable: false
         });
         canvas.add(circle);
-    };
-    if (mode === "edit") {
-        canvas.on("mouse:dblclick", copyObj);
-        $("canvas").on('doubletap', copyObj);
     };
 };
 const move = e => {
@@ -235,7 +233,7 @@ const blurValue = (copy, value) => {
 const reset = () => {
     canvas.clear();
     canvas.off("mouse:down", down).off("mouse:move", move).off("mouse:dblclick", copyObj);
-    $("canvas").off('doubletap', copyObj);
+    $("canvas").off("doubletap", copyObj);
     $("#value").off("input", slide);
     zoom = 1;
     canvas.setZoom(zoom);
@@ -329,7 +327,7 @@ const clear = async () => {
     const oImg = obj[0];
     canvas.clear();
     canvas.off("mouse:down", down).off("mouse:move", move).off("mouse:dblclick", copyObj);
-    $("canvas").off('doubletap', copyObj);
+    $("canvas").off("doubletap", copyObj);
     $("#value").off("input", slide);
     canvas.add(oImg).renderAll();
     oImg.selectable = false;
@@ -559,13 +557,3 @@ const modalOut = obj => {
         duration: 900
     });
 };
-
-/**
-* リップルエフェクト
-*/
-$("#fileButton").on("click", () => {
-    $("#fileButton").ripple();
-});
-$(".icons").on("click", () => {
-    $(".icons").ripple();
-});
