@@ -557,3 +557,15 @@ const modalOut = obj => {
         duration: 900
     });
 };
+
+// /**
+// * リップルエフェクト
+// */
+// $(".buttons").click(function () {
+//     const e = this.tagName === "LABEL" ? $("#" + $(this).attr("for")) : $(this);
+//     if (e.prop("disabled")) {
+//         $(this).children("i").removeClass("ripple");
+//         return;
+//     };
+//     $(this).children("i").addClass("ripple");
+// });
