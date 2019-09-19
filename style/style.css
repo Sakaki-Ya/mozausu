@@ -251,7 +251,6 @@ i.icons::before {
 
 .check:disabled + label i {
   color: rgba(30, 60, 70, 0.87);
-  border: double 0.2em rgba(60, 90, 100, 0.87);
   background-color: rgba(30, 30, 58, 0.87);
   box-shadow: 0 0 0 transparent;
 }
@@ -296,7 +295,6 @@ i.icons::before {
   margin: .7%;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.87);
-  transition: color 0.2s ease-out;
 }
 
 #footer button {
@@ -347,9 +345,9 @@ body#inModal .container {
 .modals h3 {
   text-align: center;
   color: rgba(150, 255, 255, 0.87);
-  transition: color 0.2s ease-out;
   font-weight: 600;
   font-size: 1.1em;
+  margin: 2.5% 0;
 }
 
 #modalTxt {
@@ -384,18 +382,9 @@ body#inModal .container {
 }
 
 #video {
-  position: relative;
-  margin: auto;
-  width: 80%;
-  margin-top: 5%;
-  padding-top: 56.25%;
-}
-
-#video iframe {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 100%;
+  padding: 5% 5% 0 5%;
+  display: flex;
+  justify-content: center;
   height: 100%;
 }
 

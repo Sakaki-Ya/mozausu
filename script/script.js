@@ -391,9 +391,13 @@ const imgDownload = (dataURL/* , lastZoom, lastVpt */) => {
 /**
  * キャンバスを閉じる
  */
-$("#close").on("click", () => {
-    viewOut();
-    $("#view").fadeOut(700);
+$("#close").on("click", async () => {
+    if ($(".valueItem").is(":visible")) {
+        valueOut();
+        $(".valueItem").fadeOut();
+    };
+    await viewOut();
+    $("#view").hide();
     $("#file")[0].value = "";
     reset();
     $("#footer").fadeIn(700);
@@ -511,25 +515,22 @@ const valueOut = () => {
     }).finished;
 };
 const viewOut = () => {
-    anime({
+    return anime({
         targets: "canvas",
         scale: [1, 0],
-        duration: 500
-    }), anime({
-        targets: ".valueItem",
-        translateX: ["0%", "1200px"],
-        duration: 500
+        duration: 400
     }), anime({
         targets: "#list li, .arrow",
         translateY: ["0%", "500px"],
         delay: anime.stagger(55),
-        duration: 500
+        duration: 400
     }), anime({
         targets: "#description",
         translateX: ["0%", "1200px"],
-        duration: 500
-    });
+        duration: 400
+    }).finished;
 };
+
 const checkOnAnime = obj => {
     anime({
         targets: obj,
