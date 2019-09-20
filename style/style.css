@@ -314,7 +314,7 @@ i.icons::before {
 body#inModal .container {
   pointer-events: none;
   transition: all .2s ease-out;
-  filter: blur(8px);
+  filter: blur(6px);
 }
 
 #modalArea {
@@ -331,7 +331,6 @@ body#inModal .container {
   background-color: rgba(18, 18, 18, 0.77);
   box-shadow: 0 0 0.6em #209cee, 0 0 0.8em rgba(165, 205, 57, 0.87);
   width: 80vw;
-  padding-bottom: 5%;
 }
 
 .modals h2 {
@@ -339,7 +338,7 @@ body#inModal .container {
   font-size: 1.3em;
   background-color: rgba(0, 177, 235, 0.87);
   width: 100%;
-  padding: 2%;
+  padding: 2% 0;
 }
 
 .modals h3 {
@@ -347,44 +346,46 @@ body#inModal .container {
   color: rgba(150, 255, 255, 0.87);
   font-weight: 600;
   font-size: 1.1em;
-  margin: 2.5% 0;
 }
 
 #modalTxt {
   font-weight: 400;
   line-height: 2em;
-  padding: 5% 5% 0 5%;
+  padding: 0 5%;
 }
 
-.modalClose {
+#policyClose {
   color: rgba(150, 255, 255, 0.87);
   transition: color 0.2s ease-out;
   display: flex;
-  align-items: center;
   margin: auto;
-  margin-top: 2.5%;
+  align-items: center;
   white-space: nowrap;
+  margin-bottom: 2.5%;
 }
 
-.modalClose i {
+#policyClose i {
   color: rgba(0, 207, 235, 0.87);
   transition: color 0.2s ease-out;
   font-size: 1.5em;
   margin-right: 10%;
 }
 
-.modalClose:hover {
+#policyClose:hover {
   color: rgba(255, 205, 150, 0.87);
 }
 
-.modalClose:hover i {
+#policyClose:hover i {
   color: rgba(255, 100, 43, 0.87);
 }
 
+#howto {
+  background-color: transparent;
+  border: none;
+}
+
 #video {
-  padding: 5% 5% 0 5%;
-  display: flex;
-  justify-content: center;
+  width: 100%;
   height: 100%;
 }
 

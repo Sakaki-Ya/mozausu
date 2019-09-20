@@ -445,22 +445,21 @@ $("#arrowRight").on("click", () => {
 * モーダルウィンドウ
 */
 let modal = 0;
-$("#howtoBtn").on("click", () => {
-    $("#video").children("iframe").prop("src", "https://www.youtube.com/embed/lnz3_87nbqM");
+$("#openHowto").on("click", () => {
+    $("#video").prop("src", "https://www.youtube.com/embed/lnz3_87nbqM");
     $("body").prop("id", "inModal");
     $("#howto").show();
     modalIn($("#howto")[0]);
     modal = 1;
 });
-$("#policyBtn").on("click", () => {
+$("#openPolicy").on("click", () => {
     $("body").prop("id", "inModal");
     $("#policy").show();
     modalIn($("#policy")[0]);
     modal = 1;
 });
-$(".modalClose").on("click", () => {
-    if ($("#howto").is(":visible")) closeHowto();
-    if ($("#policy").is(":visible")) closePolicy();
+$("#policyClose").on("click", () => {
+    closePolicy();
 });
 $(window).on("click", e => {
     if ($(e.target).closest(".modals").length) return;
@@ -473,7 +472,7 @@ $(window).on("click", e => {
 const closeHowto = () => {
     modalOut($("#howto")[0]);
     $("#howto").fadeOut(400);
-    $("#video").children("iframe").prop("src", "");
+    $("#video").prop("src", "");
     $("body").removeAttr("id", "inModal");
     modal = 0;
 };
