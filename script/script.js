@@ -458,27 +458,22 @@ $("#openPolicy").on("click", () => {
     modalIn($("#policy")[0]);
     modal = 1;
 });
-$("#policyClose").on("click", () => {
-    closePolicy();
+$(".closeModals").on("click", () => {
+    if ($("#howto").is(":visible")) closeModal($("#howto")[0]);
+    if ($("#policy").is(":visible")) closeModal($("#policy")[0]);
 });
 $(window).on("click", e => {
-    if ($(e.target).closest(".modals").length) return;
+    if ($(e.target).closest("#modalArea").length) return;
     modal += 1;
     if (modal === 3) {
-        if ($("#howto").is(":visible")) closeHowto();
-        if ($("#policy").is(":visible")) closePolicy();
+        if ($("#howto").is(":visible")) closeModal($("#howto")[0]);
+        if ($("#policy").is(":visible")) closeModal($("#policy")[0]);
     };
 });
-const closeHowto = () => {
-    modalOut($("#howto")[0]);
-    $("#howto").fadeOut(400);
+const closeModal = modalWindow => {
+    modalOut(modalWindow);
+    $(modalWindow).fadeOut(400);
     $("#video").prop("src", "");
-    $("body").removeAttr("id", "inModal");
-    modal = 0;
-};
-const closePolicy = () => {
-    modalOut($("#policy")[0]);
-    $("#policy").fadeOut(400);
     $("body").removeAttr("id", "inModal");
     modal = 0;
 };
@@ -557,15 +552,3 @@ const modalOut = obj => {
         duration: 900
     });
 };
-
-// /**
-// * リップルエフェクト
-// */
-// $(".buttons").click(function () {
-//     const e = this.tagName === "LABEL" ? $("#" + $(this).attr("for")) : $(this);
-//     if (e.prop("disabled")) {
-//         $(this).children("i").removeClass("ripple");
-//         return;
-//     };
-//     $(this).children("i").addClass("ripple");
-// });
