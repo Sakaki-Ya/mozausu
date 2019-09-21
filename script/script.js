@@ -472,7 +472,7 @@ $(window).on("click", e => {
 });
 const closeModal = modalWindow => {
     modalOut(modalWindow);
-    $(modalWindow).fadeOut(400);
+    $(modalWindow).fadeOut(700);
     $("#video").prop("src", "");
     $("body").removeAttr("id", "inModal");
     modal = 0;
