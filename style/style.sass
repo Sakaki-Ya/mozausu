@@ -185,6 +185,33 @@ i.icons::before
  display: block
  margin: auto
 
+.fa-search-plus:hover
+ transform: scale(1.2,1.2)
+
+.fa-search-minus:hover
+ transform: scale(.8,.8)
+
+.fa-eye-slash:hover
+ animation: blink 1.5s ease-in-out infinite alternate
+
+@-webkit-keyframes blink
+ 0%
+  opacity: .5
+ 100%
+  opacity: 1
+
+// .fa-eye-slash:disabled
+//  opacity: 0
+
+.fa-fast-backward:hover
+ transform: translateX(-10%)
+
+.fa-file-download:hover
+ transform: translateY(10%)
+
+.fa-times-circle:hover
+ transform: scale(0,0)
+
 .check:checked + label
  i
   color: rgba(255,205,150,.87)

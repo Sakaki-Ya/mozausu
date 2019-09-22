@@ -487,25 +487,27 @@ const viewIn = () => {
         scale: [0, 1]
     }), anime({
         targets: "#list li, .arrow",
-        translateY: ["500px", "0"],
+        translateY: ["+=600px", "0"],
         delay: anime.stagger(55)
     }), anime({
         targets: "#description",
-        translateX: ["1200px", "0%"]
+        translateX: ["-=1200px", "0%"]
     });
 };
 const valueIn = () => {
     anime({
         targets: ".valueItem",
-        translateX: ["500px", "0%"],
-        duration: 1200
+        translateX: ["-=1200px", "0%"],
+        duration: 1200,
+        easing: 'spring(1, 100, 13, 30)'
     });
 };
 const valueOut = () => {
     return anime({
         targets: ".valueItem",
-        translateX: ["0%", "1200px"],
-        duration: 900
+        translateX: ["0%", "+=1200px"],
+        duration: 900,
+        easing: 'spring(1, 100, 13, 30)'
     }).finished;
 };
 const viewOut = () => {
@@ -515,16 +517,15 @@ const viewOut = () => {
         duration: 400
     }), anime({
         targets: "#list li, .arrow",
-        translateY: ["0%", "500px"],
+        translateY: ["0%", "+=600px"],
         delay: anime.stagger(55),
         duration: 400
     }), anime({
         targets: "#description",
-        translateX: ["0%", "1200px"],
+        translateX: ["0%", "+=1200px"],
         duration: 400
     }).finished;
 };
-
 const checkOnAnime = obj => {
     anime({
         targets: obj,
@@ -542,13 +543,13 @@ const checkOffAnime = obj => {
 const modalIn = obj => {
     anime({
         targets: obj,
-        translateY: ["500px", "0%"],
+        translateY: ["-=600px", "0%"],
     });
 };
 const modalOut = obj => {
     anime({
         targets: obj,
-        translateY: ["0%", "500px"],
+        translateY: ["0%", "+=600px"],
         duration: 900
     });
 };
