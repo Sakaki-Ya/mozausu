@@ -5,42 +5,6 @@ html {
   animation: AnimationName 20s ease infinite;
 }
 
-@-webkit-keyframes AnimationName {
-  0% {
-    background-position: 0% 4%;
-  }
-  50% {
-    background-position: 100% 97%;
-  }
-  100% {
-    background-position: 0% 4%;
-  }
-}
-
-@-moz-keyframes AnimationName {
-  0% {
-    background-position: 0% 4%;
-  }
-  50% {
-    background-position: 100% 97%;
-  }
-  100% {
-    background-position: 0% 4%;
-  }
-}
-
-@-o-keyframes AnimationName {
-  0% {
-    background-position: 0% 4%;
-  }
-  50% {
-    background-position: 100% 97%;
-  }
-  100% {
-    background-position: 0% 4%;
-  }
-}
-
 @keyframes AnimationName {
   0% {
     background-position: 0% 4%;
@@ -159,7 +123,7 @@ p, button {
   filter: drop-shadow(0 0 0.2em rgba(165, 205, 57, 0.87));
 }
 
-#file, #view, .valueItem, #select, #onOff, #notImg, #overSize, #howto, #policy {
+#file, #view, .valueItem, #select, #onOff, .fas.fa-eye, #notImg, #overSize, #howto, #policy {
   display: none;
 }
 
@@ -239,6 +203,14 @@ i.icons::before {
   margin: auto;
 }
 
+.fa-pencil-alt:hover {
+  transform: rotate(-45deg);
+}
+
+.fa-pencil-alt:disabled + label i {
+  transform: rotate();
+}
+
 .fa-search-plus:hover {
   transform: scale(1.2, 1.2);
 }
@@ -253,11 +225,15 @@ i.icons::before {
 
 @-webkit-keyframes blink {
   0% {
-    opacity: .5;
+    opacity: .25;
   }
   100% {
     opacity: 1;
   }
+}
+
+.fa-eye-slash:disabled + label i {
+  animation: none;
 }
 
 .fa-fast-backward:hover {
@@ -287,6 +263,7 @@ i.icons::before {
   background-color: rgba(30, 30, 58, 0.87);
   border: solid 0.1em rgba(80, 80, 100, 0.87);
   box-shadow: 0 0 0 transparent;
+  animation: none;
 }
 
 .check:disabled + label p {

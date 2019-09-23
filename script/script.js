@@ -45,7 +45,6 @@ $("#file").on("change", e => {
 const input = url => {
     fabric.Image.fromURL(url, oImg => {
         resizeToCanvas(oImg);
-        canvas.clear();
         canvas.add(oImg).renderAll();
         canvas.selection = oImg.selectable = false;
     });
@@ -92,7 +91,6 @@ $("#select").on("click", () => {
         selectArea();
         return;
     };
-    checkOffAnime($(".fa-pencil-alt")[0]);
     clear();
 });
 
@@ -228,26 +226,6 @@ const blurValue = (copy, value) => {
 };
 
 /**
- * キャンバス上のオブジェクトとイベントリスナーを削除、スライダーを初期位置に設定
- */
-const reset = () => {
-    canvas.clear();
-    canvas.off("mouse:down", down).off("mouse:move", move).off("mouse:dblclick", copyObj);
-    $("canvas").off("doubletap", copyObj);
-    $("#value").off("input", slide);
-    zoom = 1;
-    canvas.setZoom(zoom);
-    canvas.setViewportTransform([1, 0, 0, 1, 0, 0]);
-    $("#value")[0].value = 0.25;
-    $("#select").prop("disabled", false);
-    $("#select").prop("checked", false);
-    $("#onOff").prop("disabled", true);
-    $("#onOff").prop("checked", false);
-    canvas.hoverCursor = "all-scroll";
-    mode = "";
-};
-
-/**
  * ズームボタン
  */
 let zoom = canvas.getZoom();
@@ -344,6 +322,28 @@ const clear = async () => {
         await valueOut();
         $(".valueItem").hide();
     };
+    $(".fa-pencil-alt").removeAttr("style");
+    $("#value")[0].value = 0.25;
+    canvas.hoverCursor = "all-scroll";
+    mode = "";
+};
+
+/**
+ * キャンバス上のオブジェクトとイベントリスナーを削除、スライダーを初期位置に設定
+ */
+const reset = () => {
+    canvas.clear();
+    canvas.off("mouse:down", down).off("mouse:move", move).off("mouse:dblclick", copyObj);
+    $("canvas").off("doubletap", copyObj);
+    $("#value").off("input", slide);
+    zoom = 1;
+    canvas.setZoom(zoom);
+    canvas.setViewportTransform([1, 0, 0, 1, 0, 0]);
+    $("#select").prop("disabled", false);
+    $("#select").prop("checked", false);
+    $("#onOff").prop("disabled", true);
+    $("#onOff").prop("checked", false);
+    $(".fa-pencil-alt").removeAttr("style");
     $("#value")[0].value = 0.25;
     canvas.hoverCursor = "all-scroll";
     mode = "";
@@ -398,9 +398,10 @@ $("#close").on("click", async () => {
     };
     await viewOut();
     $("#view").hide();
-    $("#file")[0].value = "";
     reset();
     $("#footer").fadeIn(700);
+    $(".fa-pencil-alt").removeAttr("style");
+    $("#file")[0].value = "";
 });
 
 /**
