@@ -87,7 +87,7 @@ const resize = () => {
  */
 $("#select").on("click", () => {
     if ($("#select").prop("checked")) {
-        checkOnAnime($(".fa-pencil-alt")[0]);
+        // checkOnAnime($(".fa-pencil-alt")[0]);
         selectArea();
         return;
     };
@@ -187,8 +187,8 @@ const clippingObj = copy => {
     const obj = canvas.getObjects();
     for (let i = 1; i < obj.length; i++)
         canvas.remove(obj[i]);
-    checkOffAnime($(".fa-pencil-alt")[0]);
-    checkOnAnime($(".fa-eye-slash")[0]);
+    // checkOffAnime($(".fa-pencil-alt")[0]);
+    // checkOnAnime($(".fa-eye-slash")[0]);
     $("#select").prop("disabled", true);
     $("#onOff").prop("disabled", false);
     $("#value")[0].value = 0.25;
@@ -285,12 +285,12 @@ $("#onOff").on("click", () => {
     if (obj.length === 2) {
         const blurObj = obj[1];
         if ($("#onOff").prop("checked") == true) {
-            checkOffAnime($(".fa-eye-slash")[0]);
+            // checkOffAnime($(".fa-eye-slash")[0]);
             blurObj.opacity = 0;
             canvas.remove(blurObj).add(blurObj).renderAll();
             return;
         };
-        checkOnAnime($(".fa-eye-slash")[0]);
+        // checkOnAnime($(".fa-eye-slash")[0]);
         blurObj.opacity = 1;
         canvas.remove(blurObj).add(blurObj).renderAll();
     };
@@ -300,7 +300,7 @@ $("#onOff").on("click", () => {
  * ストロークとブラーオブジェクトをクリア
  */
 $("#clear").on("click", () => clear());
-const clear = async () => {
+const clear = () => {
     const obj = canvas.getObjects();
     const oImg = obj[0];
     canvas.clear();
@@ -316,11 +316,11 @@ const clear = async () => {
     $("#select").prop("checked", false);
     $("#onOff").prop("disabled", true);
     $("#onOff").prop("checked", false);
-    checkOffAnime($(".fa-pencil-alt")[0]);
-    checkOffAnime($(".fa-eye-slash")[0]);
+    // checkOffAnime($(".fa-pencil-alt")[0]);
+    // checkOffAnime($(".fa-eye-slash")[0]);
     if ($(".valueItem").is(":visible")) {
-        await valueOut();
-        $(".valueItem").hide();
+        valueOut();
+        $(".valueItem").fadeOut(700);
     };
     $(".fa-pencil-alt").removeAttr("style");
     $("#value")[0].value = 0.25;
@@ -504,12 +504,12 @@ const valueIn = () => {
     });
 };
 const valueOut = () => {
-    return anime({
+    anime({
         targets: ".valueItem",
         translateX: ["0%", "+=1200px"],
         duration: 900,
         easing: 'spring(1, 100, 13, 30)'
-    }).finished;
+    });
 };
 const viewOut = () => {
     return anime({
@@ -527,20 +527,20 @@ const viewOut = () => {
         duration: 400
     }).finished;
 };
-const checkOnAnime = obj => {
-    anime({
-        targets: obj,
-        rotateY: "1turn",
-        duration: 900
-    });
-};
-const checkOffAnime = obj => {
-    anime({
-        targets: obj,
-        rotateY: "0turn",
-        duration: 900
-    });
-};
+// const checkOnAnime = obj => {
+//     anime({
+//         targets: obj,
+//         rotateY: "1turn",
+//         duration: 900
+//     });
+// };
+// const checkOffAnime = obj => {
+//     anime({
+//         targets: obj,
+//         rotateY: "0turn",
+//         duration: 900
+//     });
+// };
 const modalIn = obj => {
     anime({
         targets: obj,

@@ -207,8 +207,8 @@ i.icons::before {
   transform: rotate(-45deg);
 }
 
-.fa-pencil-alt:disabled + label i {
-  transform: rotate();
+#select:checked + label i {
+  transform: rotate(-45deg);
 }
 
 .fa-search-plus:hover {
@@ -219,21 +219,55 @@ i.icons::before {
   transform: scale(0.8, 0.8);
 }
 
-.fa-eye-slash:hover {
-  animation: blink 1.5s ease-in-out infinite alternate;
+#onOff:hover + label .fa-eye-slash {
+  display: none;
 }
 
-@-webkit-keyframes blink {
+#onOff:hover + label .fa-eye {
+  display: flex;
+  margin: auto;
+  animation: fade-in .2s ease-out forwards;
+}
+
+@keyframes fade-in {
   0% {
-    opacity: .25;
+    opacity: .5;
   }
   100% {
     opacity: 1;
   }
 }
 
-.fa-eye-slash:disabled + label i {
+#onOff:hover::before + label .fa-eye {
+  animation: fade-out .2s ease-out forwards;
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: .5;
+  }
+}
+
+#onOff:checked + label .fa-eye-slash {
+  display: none;
+}
+
+#onOff:checked + label .fa-eye {
+  display: flex;
+  margin: auto;
   animation: none;
+}
+
+#onOff:disabled + label .fa-eye {
+  display: none;
+}
+
+#onOff:disabled + label .fa-eye-slash {
+  display: flex;
+  margin: auto;
 }
 
 .fa-fast-backward:hover {
