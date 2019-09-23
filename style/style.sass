@@ -33,7 +33,7 @@ svg
 
 .svgBlue
  fill: rgba(0,177,235,.87)
- transition: fill 0.2s ease-out
+ transition: fill .2s ease-out
 
 svg a:hover .svgBlue
  fill: rgba(150,255,255,.87)
@@ -60,7 +60,7 @@ p, button
  width: 100%
  padding: 3%
  border: .4em solid rgba(0,177,235,.87)
- transition: border 0.2s ease-out
+ transition: border .2s ease-out
  box-shadow: 0 0 .4em rgba(165,205,57,.87)
  background-color: rgba(255,140,255,.15)
 
@@ -113,7 +113,7 @@ p, button
 
 i
  color: rgba(0,127,185,.87)
- transition: color 0.2s ease-out
+ transition: color .2s ease-out
 
 #list
  display: inline-flex
@@ -128,7 +128,7 @@ li p
  color: rgba(150,255,255,.87)
  margin-top: .5em
  white-space: nowrap
- transition: color 0.2s ease-out
+ transition: color .2s ease-out
 
 .buttons
  margin: 0 1em
@@ -156,7 +156,7 @@ i.icons
  height: 2.2em
  border-radius: 50%
  border: double .2em rgba(0,157,215,.87)
- transition: all 0.2s ease-out
+ transition: all .2s ease-out
  background-color: rgba(255,140,255,.15)
  box-shadow: 0 0 .2em rgba(165,205,57,.87)
 
@@ -182,22 +182,13 @@ i.icons::before
  .fa-eye
   display: flex
   margin: auto
-  animation: fade-in .2s ease-out forwards
+  animation: fade-in .5s ease-out
 
 @keyframes fade-in
  0%
   opacity: .5
  100%
   opacity: 1
-
-#onOff:hover::before + label .fa-eye
-  animation: fade-out .2s ease-out forwards
-
-@keyframes fade-out
- 0%
-  opacity: 1
- 100%
-  opacity: .5
 
 #onOff:checked + label
  .fa-eye-slash
@@ -272,7 +263,7 @@ i.icons::before
  button
   font-size: 1em
   color: rgba(150,255,255,.87)
-  transition: color 0.2s ease-out
+  transition: color .2s ease-out
  p
   font-size: .9em
  button:hover
@@ -292,7 +283,7 @@ body#inModal .container
 
 #policys
  color: rgba(255,255,255,.87)
- transition: color 0.2s ease-out
+ transition: color .2s ease-out
  background-color: rgba(18,18,18,.77)
  box-shadow: 0 0 .6em rgba(32,156,238,1),0 0 .8em rgba(165,205,57,.87)
  width: 80vw
@@ -319,7 +310,7 @@ body#inModal .container
 
 .closeModals
  color: rgba(150,255,255,.87)
- transition: color 0.2s ease-out
+ transition: color .2s ease-out
  display: flex
  margin: auto
  align-items: center
@@ -327,7 +318,7 @@ body#inModal .container
  margin-top: 1em
  i
   color: rgba(0,207,235,.87)
-  transition: color 0.2s ease-out
+  transition: color .2s ease-out
   font-size: 1.5em
   margin-right: 10%
 

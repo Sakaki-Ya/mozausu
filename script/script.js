@@ -87,7 +87,6 @@ const resize = () => {
  */
 $("#select").on("click", () => {
     if ($("#select").prop("checked")) {
-        // checkOnAnime($(".fa-pencil-alt")[0]);
         selectArea();
         return;
     };
@@ -316,8 +315,6 @@ const clear = () => {
     $("#select").prop("checked", false);
     $("#onOff").prop("disabled", true);
     $("#onOff").prop("checked", false);
-    // checkOffAnime($(".fa-pencil-alt")[0]);
-    // checkOffAnime($(".fa-eye-slash")[0]);
     if ($(".valueItem").is(":visible")) {
         valueOut();
         $(".valueItem").fadeOut(700);
@@ -490,10 +487,10 @@ const viewIn = () => {
         targets: "#list li, .arrow",
         translateY: ["+=600px", "0"],
         delay: anime.stagger(55)
-    }), anime({
+    })/* , anime({
         targets: "#description",
         translateX: ["-=1200px", "0%"]
-    });
+    }) */;
 };
 const valueIn = () => {
     anime({
@@ -521,11 +518,11 @@ const viewOut = () => {
         translateY: ["0%", "+=600px"],
         delay: anime.stagger(55),
         duration: 400
-    }), anime({
+    })/* , anime({
         targets: "#description",
         translateX: ["0%", "+=1200px"],
         duration: 400
-    }).finished;
+    }) */.finished;
 };
 // const checkOnAnime = obj => {
 //     anime({
