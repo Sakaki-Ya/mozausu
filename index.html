@@ -77,8 +77,8 @@
             <!-- view -->
             <div class="block" id="view">
                 <div id="description">
-                    <p>「範囲指定」を押して、ウスクしたい範囲をクリックして囲ってください。</p>
-                    <p>ダブルクリックすると囲った範囲内がウスクなります。</p>
+                    <p><span class="bold">範囲指定</span>ボタンを押して、ウスクしたい範囲をクリックして囲ってください。</p>
+                    <p><span class="bold">ダブルクリック</span>すると囲った範囲内がウスクなります。</p>
                 </div>
                 <!-- canvas -->
                 <div class="block" id="cnvArea">
@@ -111,8 +111,8 @@
                             </li>
                             <li><input type="checkbox" id="onOff" class="check">
                                 <label for="onOff" class="buttons">
-                                    <i class="fas fa-eye-slash icons"></i>
-                                    <i class="fas fa-eye icons"></i>
+                                    <i class="fas fa-eye-slash eyes icons"></i>
+                                    <i class="fas fa-eye eyes icons"></i>
                                     <p>元画像確認</p>
                                 </label>
                             </li>
@@ -141,7 +141,7 @@
                 </div>
             </div>
             <!-- caution -->
-            <div class="block">
+            <div class="block caution">
                 <h2 id="notImg"><i class="fas fa-exclamation-triangle fa-3x"></i>
                     <p class="is-size-5 has-text-white-bis">画像ではありません。</p>
                 </h2>
@@ -160,7 +160,7 @@
     <!-- modal -->
     <div id="modalArea">
         <div id="howto">
-            <div id="youtube" class="block">
+            <div id="youtube">
                 <iframe id="video" width="560" height="315" src="" frameborder="0"
                     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" showinfo=0></iframe>
             </div>

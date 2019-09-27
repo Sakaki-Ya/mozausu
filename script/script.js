@@ -8,6 +8,7 @@ const canvas = new fabric.Canvas("c");
 let imgType;
 $("#file").on("change", e => {
     $("#view, #notImg, #overSize, #footer").hide();
+    canvas.clear();
     reset();
     const file = e.target.files;
     const fileType = file[0].type;
@@ -24,13 +25,12 @@ $("#file").on("change", e => {
     };
     const fr = new FileReader(e);
     fr.onload = (e) => {
-        if (fileType.match("image.png"))
-            imgType = "png";
+        if (fileType.match("image.png")) imgType = "png";
         input(e.target.result);
         $("#view").show();
         viewIn();
         $("#list").scrollLeft(0);
-        fixArrowVisibility();
+        arrowVisibility();
         const optHeight = $("#optPanel").outerHeight();
         $("#cnvArea").css("padding-bottom", optHeight);
     };
@@ -76,7 +76,7 @@ const resize = () => {
             obj[i].scale(resizeScale);
             canvas.setHeight(obj[i].height * resizeScale);
         };
-        fixArrowVisibility();
+        arrowVisibility();
         const optHeight = $("#optPanel").outerHeight();
         $("#cnvArea").css("padding-bottom", optHeight);
     };
@@ -186,8 +186,6 @@ const clippingObj = copy => {
     const obj = canvas.getObjects();
     for (let i = 1; i < obj.length; i++)
         canvas.remove(obj[i]);
-    // checkOffAnime($(".fa-pencil-alt")[0]);
-    // checkOnAnime($(".fa-eye-slash")[0]);
     $("#select").prop("disabled", true);
     $("#onOff").prop("disabled", false);
     $("#value")[0].value = 0.25;
@@ -281,18 +279,15 @@ canvas.on("mouse:up", () => {
  */
 $("#onOff").on("click", () => {
     const obj = canvas.getObjects();
-    if (obj.length === 2) {
-        const blurObj = obj[1];
-        if ($("#onOff").prop("checked") == true) {
-            // checkOffAnime($(".fa-eye-slash")[0]);
-            blurObj.opacity = 0;
-            canvas.remove(blurObj).add(blurObj).renderAll();
-            return;
-        };
-        // checkOnAnime($(".fa-eye-slash")[0]);
-        blurObj.opacity = 1;
+    if (!obj.length === 2) return;
+    const blurObj = obj[1];
+    if ($("#onOff").prop("checked") === true) {
+        blurObj.opacity = 0;
         canvas.remove(blurObj).add(blurObj).renderAll();
+        return;
     };
+    blurObj.opacity = 1;
+    canvas.remove(blurObj).add(blurObj).renderAll();
 });
 
 /**
@@ -303,36 +298,19 @@ const clear = () => {
     const obj = canvas.getObjects();
     const oImg = obj[0];
     canvas.clear();
-    canvas.off("mouse:down", down).off("mouse:move", move).off("mouse:dblclick", copyObj);
-    $("canvas").off("doubletap", copyObj);
-    $("#value").off("input", slide);
     canvas.add(oImg).renderAll();
     oImg.selectable = false;
-    zoom = 1;
-    canvas.setZoom(zoom);
-    canvas.setViewportTransform([1, 0, 0, 1, 0, 0]);
-    $("#select").prop("disabled", false);
-    $("#select").prop("checked", false);
-    $("#onOff").prop("disabled", true);
-    $("#onOff").prop("checked", false);
     if ($(".valueItem").is(":visible")) {
         valueOut();
         $(".valueItem").fadeOut(700);
     };
-    $(".fa-pencil-alt").removeAttr("style");
-    $("#value")[0].value = 0.25;
-    canvas.hoverCursor = "all-scroll";
-    mode = "";
+    reset();
 };
 
 /**
- * キャンバス上のオブジェクトとイベントリスナーを削除、スライダーを初期位置に設定
+ * 拡大率、チェックボックス、スライダー、カーソル、範囲指定ツールのモード、イベントハンドラをクリア
  */
 const reset = () => {
-    canvas.clear();
-    canvas.off("mouse:down", down).off("mouse:move", move).off("mouse:dblclick", copyObj);
-    $("canvas").off("doubletap", copyObj);
-    $("#value").off("input", slide);
     zoom = 1;
     canvas.setZoom(zoom);
     canvas.setViewportTransform([1, 0, 0, 1, 0, 0]);
@@ -340,10 +318,12 @@ const reset = () => {
     $("#select").prop("checked", false);
     $("#onOff").prop("disabled", true);
     $("#onOff").prop("checked", false);
-    $(".fa-pencil-alt").removeAttr("style");
     $("#value")[0].value = 0.25;
     canvas.hoverCursor = "all-scroll";
     mode = "";
+    canvas.off("mouse:down", down).off("mouse:move", move).off("mouse:dblclick", copyObj);
+    $("canvas").off("doubletap", copyObj);
+    $("#value").off("input", slide);
 };
 
 /**
@@ -395,31 +375,29 @@ $("#close").on("click", async () => {
     };
     await viewOut();
     $("#view").hide();
+    canvas.clear();
     reset();
-    $("#footer").fadeIn(700);
-    $(".fa-pencil-alt").removeAttr("style");
+    $("#footer").fadeIn();
     $("#file")[0].value = "";
 });
 
 /**
  * オプションボタン両端の矢印表示制御
  */
-$("#list").scroll(() => fixArrowVisibility());
-const fixArrowVisibility = () => {
+$("#list").scroll(() => arrowVisibility());
+const arrowVisibility = () => {
     const scrollPosition = $("#list").scrollLeft();
     const maxPostion = $("#list").get(0).scrollWidth - $("#list").get(0).clientWidth;
-    let arrowLeftVisibility = "visible";
-    let arrowRightVisibility = "visible";
-    if (scrollPosition === 0)
-        arrowLeftVisibility = "hidden";
-    if (scrollPosition === maxPostion)
-        arrowRightVisibility = "hidden";
-    $("#arrowLeft").css("visibility", arrowLeftVisibility);
-    $("#arrowRight").css("visibility", arrowRightVisibility);
+    let leftVisibility = "visible";
+    let rightVisibility = "visible";
+    if (scrollPosition === 0) leftVisibility = "hidden";
+    if (scrollPosition === maxPostion) rightVisibility = "hidden";
+    $("#arrowLeft").css("visibility", leftVisibility);
+    $("#arrowRight").css("visibility", rightVisibility);
 };
 
 /**
- * 矢印ボタン スクロール制御
+ * 矢印ボタンのスクロール制御
  */
 $("#arrowLeft").on("click", () => {
     const scrollPosition = $("#list").scrollLeft();
@@ -445,16 +423,16 @@ $("#arrowRight").on("click", () => {
 let modal = 0;
 $("#openHowto").on("click", () => {
     $("#video").prop("src", "https://www.youtube.com/embed/lnz3_87nbqM");
-    $("body").prop("id", "inModal");
     $("#howto").show();
-    modalIn($("#howto")[0]);
+    $("body").prop("id", "inModal");
     modal = 1;
+    modalIn($("#howto")[0]);
 });
 $("#openPolicy").on("click", () => {
-    $("body").prop("id", "inModal");
     $("#policy").show();
-    modalIn($("#policy")[0]);
+    $("body").prop("id", "inModal");
     modal = 1;
+    modalIn($("#policy")[0]);
 });
 $(".closeModals").on("click", () => {
     if ($("#howto").is(":visible")) closeModal($("#howto")[0]);
@@ -487,10 +465,7 @@ const viewIn = () => {
         targets: "#list li, .arrow",
         translateY: ["+=600px", "0"],
         delay: anime.stagger(55)
-    })/* , anime({
-        targets: "#description",
-        translateX: ["-=1200px", "0%"]
-    }) */;
+    });
 };
 const valueIn = () => {
     anime({
@@ -518,26 +493,8 @@ const viewOut = () => {
         translateY: ["0%", "+=600px"],
         delay: anime.stagger(55),
         duration: 400
-    })/* , anime({
-        targets: "#description",
-        translateX: ["0%", "+=1200px"],
-        duration: 400
-    }) */.finished;
+    }).finished;
 };
-// const checkOnAnime = obj => {
-//     anime({
-//         targets: obj,
-//         rotateY: "1turn",
-//         duration: 900
-//     });
-// };
-// const checkOffAnime = obj => {
-//     anime({
-//         targets: obj,
-//         rotateY: "0turn",
-//         duration: 900
-//     });
-// };
 const modalIn = obj => {
     anime({
         targets: obj,
