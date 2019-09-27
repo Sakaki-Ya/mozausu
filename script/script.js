@@ -8,18 +8,17 @@ const canvas = new fabric.Canvas("c");
 let imgType;
 $("#file").on("change", e => {
     $("#view, #notImg, #overSize, #footer").hide();
-    canvas.clear();
     reset();
     const file = e.target.files;
     const fileType = file[0].type;
     const imgSize = file[0].size;
     if (!fileType.match("image.*")) {
-        $("#notImg").show();
+        $("#notImg").fadeIn();
         $("#file")[0].value = "";
         return;
     };
     if (imgSize > 1500000) {
-        $("#overSize").show();
+        $("#overSize").fadeIn();
         $("#file")[0].value = "";
         return;
     };
@@ -43,10 +42,10 @@ $("#file").on("change", e => {
  * @return void
  */
 const input = url => {
-    fabric.Image.fromURL(url, oImg => {
-        resizeToCanvas(oImg);
-        canvas.add(oImg).renderAll();
-        canvas.selection = oImg.selectable = false;
+    fabric.Image.fromURL(url, img => {
+        resizeToCanvas(img);
+        canvas.add(img).renderAll();
+        canvas.selection = img.selectable = false;
     });
 };
 
@@ -70,8 +69,8 @@ const resize = () => {
     if ($("#view").is(":visible") && mode === "") {
         canvas.setWidth($(".container").width());
         const obj = canvas.getObjects();
-        const oImg = obj[0];
-        const resizeScale = canvas.width / oImg.width;
+        const img = obj[0];
+        const resizeScale = canvas.width / img.width;
         for (let i = 0; i < obj.length; i++) {
             obj[i].scale(resizeScale);
             canvas.setHeight(obj[i].height * resizeScale);
@@ -158,11 +157,11 @@ const move = e => {
  */
 const copyObj = () => {
     const obj = canvas.getObjects();
-    const oImg = obj[0];
-    oImg.clone(copy => {
+    const img = obj[0];
+    img.clone(copy => {
         copy.set({
-            scaleX: oImg.scaleX,
-            scaleY: oImg.scaleY
+            scaleX: img.scaleX,
+            scaleY: img.scaleY
         });
         copy.selectable = false;
         clippingObj(copy);
@@ -296,21 +295,21 @@ $("#onOff").on("click", () => {
 $("#clear").on("click", () => clear());
 const clear = () => {
     const obj = canvas.getObjects();
-    const oImg = obj[0];
-    canvas.clear();
-    canvas.add(oImg).renderAll();
-    oImg.selectable = false;
+    const img = obj[0];
+    reset();
+    canvas.add(img).renderAll();
+    img.selectable = false;
     if ($(".valueItem").is(":visible")) {
         valueOut();
         $(".valueItem").fadeOut(700);
     };
-    reset();
 };
 
 /**
  * 拡大率、チェックボックス、スライダー、カーソル、範囲指定ツールのモード、イベントハンドラをクリア
  */
 const reset = () => {
+    canvas.clear();
     zoom = 1;
     canvas.setZoom(zoom);
     canvas.setViewportTransform([1, 0, 0, 1, 0, 0]);
@@ -336,10 +335,10 @@ $("#dl").on("click", () => {
     canvas.setZoom(zoom);
     canvas.setViewportTransform([1, 0, 0, 1, 0, 0]);
     const obj = canvas.getObjects();
-    const oImg = obj[0];
-    canvas.width = oImg.width;
-    canvas.height = oImg.height;
-    const resizeScale = canvas.width / oImg.width;
+    const img = obj[0];
+    canvas.width = img.width;
+    canvas.height = img.height;
+    const resizeScale = canvas.width / img.width;
     for (let i = 0; i < obj.length; i++)
         obj[i].scale(resizeScale);
     if (imgType === "png") {
@@ -375,7 +374,6 @@ $("#close").on("click", async () => {
     };
     await viewOut();
     $("#view").hide();
-    canvas.clear();
     reset();
     $("#footer").fadeIn();
     $("#file")[0].value = "";

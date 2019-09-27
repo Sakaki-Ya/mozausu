@@ -133,6 +133,10 @@ p, button {
   display: none;
 }
 
+#notImg, #overSize {
+  margin: 2.5%;
+}
+
 #optPanel {
   position: fixed;
   bottom: 0;
@@ -143,7 +147,7 @@ p, button {
 #buttonWrap {
   display: flex;
   justify-content: center;
-  padding-bottom: 1%;
+  padding-bottom: 2.5%;
 }
 
 i {
@@ -325,10 +329,6 @@ i.icons::before {
 
 .fa-exclamation-triangle {
   margin: 2%;
-}
-
-.caution {
-  margin: 5%;
 }
 
 #footer {
