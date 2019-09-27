@@ -94,8 +94,8 @@ p, button {
 
 #description {
   color: rgba(255, 255, 255, 0.87);
-  margin: 4% 0;
   line-height: 2em;
+  margin: 2em 0;
 }
 
 .bold {
