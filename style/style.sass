@@ -4,9 +4,9 @@ html
  padding: 3% 10%
  background: linear-gradient(90deg, #010e14, #0a3438, #010e14)
  background-size: 400% 400%
- animation: AnimationName 20s ease infinite
+ animation: backgroundAnime 20s ease infinite
 
-@keyframes AnimationName
+@keyframes backgroundAnime
  0%
   background-position: 0% 4%
  50%
@@ -182,9 +182,11 @@ i.icons::before
  .fa-eye
   display: flex
   margin: auto
-  animation: fade-in .5s ease-out
 
-@keyframes fade-in
+.eyes
+ animation: fadeIn .5s ease-out
+
+@keyframes fadeIn
  0%
   opacity: .5
  100%
