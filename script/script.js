@@ -186,8 +186,6 @@ const clippingObj = copy => {
     const obj = canvas.getObjects();
     for (let i = 1; i < obj.length; i++)
         canvas.remove(obj[i]);
-    // checkOffAnime($(".fa-pencil-alt")[0]);
-    // checkOnAnime($(".fa-eye-slash")[0]);
     $("#select").prop("disabled", true);
     $("#onOff").prop("disabled", false);
     $("#value")[0].value = 0.25;
@@ -284,12 +282,10 @@ $("#onOff").on("click", () => {
     if (obj.length === 2) {
         const blurObj = obj[1];
         if ($("#onOff").prop("checked") == true) {
-            // checkOffAnime($(".fa-eye-slash")[0]);
             blurObj.opacity = 0;
             canvas.remove(blurObj).add(blurObj).renderAll();
             return;
         };
-        // checkOnAnime($(".fa-eye-slash")[0]);
         blurObj.opacity = 1;
         canvas.remove(blurObj).add(blurObj).renderAll();
     };
@@ -487,10 +483,7 @@ const viewIn = () => {
         targets: "#list li, .arrow",
         translateY: ["+=600px", "0"],
         delay: anime.stagger(55)
-    })/* , anime({
-        targets: "#description",
-        translateX: ["-=1200px", "0%"]
-    }) */;
+    });
 };
 const valueIn = () => {
     anime({
@@ -518,26 +511,8 @@ const viewOut = () => {
         translateY: ["0%", "+=600px"],
         delay: anime.stagger(55),
         duration: 400
-    })/* , anime({
-        targets: "#description",
-        translateX: ["0%", "+=1200px"],
-        duration: 400
-    }) */.finished;
+    });
 };
-// const checkOnAnime = obj => {
-//     anime({
-//         targets: obj,
-//         rotateY: "1turn",
-//         duration: 900
-//     });
-// };
-// const checkOffAnime = obj => {
-//     anime({
-//         targets: obj,
-//         rotateY: "0turn",
-//         duration: 900
-//     });
-// };
 const modalIn = obj => {
     anime({
         targets: obj,
