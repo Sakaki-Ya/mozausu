@@ -235,10 +235,10 @@ i.icons::before {
 }
 
 .eyes {
-  animation: fade-in .5s ease-out;
+  animation: fadeIn .5s ease-out;
 }
 
-@keyframes fade-in {
+@keyframes fadeIn {
   0% {
     opacity: .5;
   }
