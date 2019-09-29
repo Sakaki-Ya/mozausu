@@ -42,10 +42,10 @@ $("#file").on("change", e => {
  * @return void
  */
 const input = url => {
-    fabric.Image.fromURL(url, img => {
-        resizeToCanvas(img);
-        canvas.add(img).renderAll();
-        canvas.selection = img.selectable = false;
+    fabric.Image.fromURL(url, origImg => {
+        resizeToCanvas(origImg);
+        canvas.add(origImg).renderAll();
+        canvas.selection = origImg.selectable = false;
     });
 };
 
@@ -69,8 +69,8 @@ const resize = () => {
     if ($("#view").is(":visible") && mode === "") {
         canvas.setWidth($(".container").width());
         const obj = canvas.getObjects();
-        const img = obj[0];
-        const resizeScale = canvas.width / img.width;
+        const origImg = obj[0];
+        const resizeScale = canvas.width / origImg.width;
         for (let i = 0; i < obj.length; i++) {
             obj[i].scale(resizeScale);
             canvas.setHeight(obj[i].height * resizeScale);
@@ -157,11 +157,11 @@ const move = e => {
  */
 const copyObj = () => {
     const obj = canvas.getObjects();
-    const img = obj[0];
-    img.clone(copy => {
+    const origImg = obj[0];
+    origImg.clone(copy => {
         copy.set({
-            scaleX: img.scaleX,
-            scaleY: img.scaleY
+            scaleX: origImg.scaleX,
+            scaleY: origImg.scaleY
         });
         copy.selectable = false;
         clippingObj(copy);
@@ -295,10 +295,10 @@ $("#onOff").on("click", () => {
 $("#clear").on("click", () => clear());
 const clear = () => {
     const obj = canvas.getObjects();
-    const img = obj[0];
+    const origImg = obj[0];
     reset();
-    canvas.add(img).renderAll();
-    img.selectable = false;
+    canvas.add(origImg).renderAll();
+    origImg.selectable = false;
     if ($(".valueItem").is(":visible")) {
         valueOut();
         $(".valueItem").fadeOut(700);
@@ -335,10 +335,10 @@ $("#dl").on("click", () => {
     canvas.setZoom(zoom);
     canvas.setViewportTransform([1, 0, 0, 1, 0, 0]);
     const obj = canvas.getObjects();
-    const img = obj[0];
-    canvas.width = img.width;
-    canvas.height = img.height;
-    const resizeScale = canvas.width / img.width;
+    const origImg = obj[0];
+    canvas.width = origImg.width;
+    canvas.height = origImg.height;
+    const resizeScale = canvas.width / origImg.width;
     for (let i = 0; i < obj.length; i++)
         obj[i].scale(resizeScale);
     if (imgType === "png") {
@@ -353,10 +353,10 @@ $("#dl").on("click", () => {
     imgDownload(dataURL/* , lastZoom, lastVpt */);
 });
 const imgDownload = (dataURL/* , lastZoom, lastVpt */) => {
-    const name = $("#file")[0].files[0].name;
+    const origName = $("#file")[0].files[0].name;
     const a = document.createElement("a");
     a.href = dataURL;
-    a.download = `mozausu-${name}`;
+    a.download = `mozausu-${origName}`;
     a.click();
     // zoom = canvas.getZoom();
     // canvas.setZoom(lastZoom);
