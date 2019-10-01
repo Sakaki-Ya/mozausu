@@ -129,7 +129,7 @@ p, button {
   filter: drop-shadow(0 0 0.2em rgba(165, 205, 57, 0.87));
 }
 
-#file, #view, .valueItem, #select, #onOff, .fas.fa-eye, #notImg, #overSize, #howto, #policy {
+#file, #view, .valueItem, #select, #onOff, .fas.fa-eye, #hideDl, #notImg, #overSize, #howto, #policy {
   display: none;
 }
 

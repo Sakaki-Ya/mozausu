@@ -351,8 +351,14 @@ $("#dl").on("click", () => {
     imgDownload(dataURL);
 });
 const imgDownload = dataURL => {
+    if (canvas.msToBlob) { //for IE
+        const blob = canvas.msToBlob();
+        window.navigator.msSaveBlob(blob, 'download.png');
+        resize();
+        return;
+    };
     const origName = $("#file")[0].files[0].name;
-    const a = document.createElement("a");
+    const a = $("#hideDl")[0];
     a.href = dataURL;
     a.download = `mozausu-${origName}`;
     a.click();
@@ -480,12 +486,12 @@ const viewOut = () => {
     return anime({
         targets: "canvas",
         scale: [1, 0],
-        duration: 400
+        duration: 250
     }), anime({
         targets: "#list li, .arrow",
         translateY: ["0%", "+=600px"],
         delay: anime.stagger(55),
-        duration: 400
+        duration: 250
     }).finished;
 };
 const modalIn = obj => {
