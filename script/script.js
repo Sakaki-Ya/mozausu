@@ -356,7 +356,7 @@ const imgDownload = (dataURL/* , lastZoom, lastVpt */) => {
     const origName = $("#file")[0].files[0].name;
     const a = document.createElement("a");
     a.href = dataURL;
-    a.download = `mozausu-${origName}`;
+    // a.download = `mozausu-${origName}`;
     a.click();
     // zoom = canvas.getZoom();
     // canvas.setZoom(lastZoom);
