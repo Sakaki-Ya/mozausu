@@ -247,7 +247,7 @@ let prevY;
 canvas.on("mouse:down", e => {
     if (canvas.hoverCursor === "all-scroll") {
         panning = true;
-        if (e.e instanceof TouchEvent) {
+        if (window.TouchEvent && e.e instanceof TouchEvent) {
             const { clientX, clientY } = e.e.touches[0];
             prevX = clientX;
             prevY = clientY;
@@ -257,7 +257,7 @@ canvas.on("mouse:down", e => {
 canvas.on("mouse:move", e => {
     if (panning) {
         let delta;
-        if (e.e instanceof TouchEvent) {
+        if (window.TouchEvent && e.e instanceof TouchEvent) {
             const { clientX, clientY } = e.e.touches[0];
             delta = new fabric.Point(clientX - prevX, clientY - prevY);
             prevX = clientX;
@@ -329,8 +329,6 @@ const reset = () => {
  * 画像保存
  */
 $("#dl").on("click", () => {
-    // const lastZoom = canvas.getZoom()
-    // const lastVpt = canvas.getVpCenter();
     zoom = 1;
     canvas.setZoom(zoom);
     canvas.setViewportTransform([1, 0, 0, 1, 0, 0]);
@@ -343,24 +341,21 @@ $("#dl").on("click", () => {
         obj[i].scale(resizeScale);
     if (imgType === "png") {
         const dataURL = canvas.toDataURL({ format: "png" });
-        imgDownload(dataURL/* , lastZoom, lastVpt */);
+        imgDownload(dataURL);
         return;
     };
     const dataURL = canvas.toDataURL({
         format: "jpeg",
         quality: 1
     });
-    imgDownload(dataURL/* , lastZoom, lastVpt */);
+    imgDownload(dataURL);
 });
-const imgDownload = (dataURL/* , lastZoom, lastVpt */) => {
+const imgDownload = dataURL => {
     const origName = $("#file")[0].files[0].name;
     const a = document.createElement("a");
     a.href = dataURL;
-    // a.download = `mozausu-${origName}`;
+    a.download = `mozausu-${origName}`;
     a.click();
-    // zoom = canvas.getZoom();
-    // canvas.setZoom(lastZoom);
-    // console.log(lastVpt);
     resize();
 };
 
