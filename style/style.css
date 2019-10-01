@@ -43,7 +43,7 @@ svg {
 }
 
 svg a:hover .svgBlue {
-  fill: rgba(255, 100, 43, 0.87);
+  fill: rgba(255, 205, 150, 0.87);
 }
 
 p, button {
