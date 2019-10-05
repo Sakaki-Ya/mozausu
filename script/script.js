@@ -7,8 +7,8 @@ const canvas = new fabric.Canvas("c");
  */
 let imgType;
 $("#file").on("change", e => {
-    if ($(".valueItem").is(":visible")) $(".valueItem").fadeOut();
-    $("#view, #notImg, #overSize, #footer").fadeOut();
+    $("#view, #notImg, #overSize, #footer").hide();
+    if ($(".valueItem").is(":visible")) $(".valueItem").hide();
     reset();
     const file = e.target.files;
     const fileType = file[0].type;
@@ -184,9 +184,9 @@ const clippingObj = copy => {
     });
     copy.clipPath = polygon;
     canvas.remove(stroke);
-    const obj = canvas.getObjects();
-    for (let i = 1; i < obj.length; i++)
-        canvas.remove(obj[i]);
+    const circles = canvas.getObjects();
+    for (let i = 1; i < circles.length; i++)
+        canvas.remove(circles[i]);
     $("#select").prop("disabled", true);
     $("#onOff").prop("disabled", false);
     $("#value")[0].value = 0.25;
@@ -303,7 +303,7 @@ const clear = () => {
     origImg.selectable = false;
     if ($(".valueItem").is(":visible")) {
         valueOut();
-        $(".valueItem").fadeOut(700);
+        $(".valueItem").fadeOut(1200);
     };
 };
 
@@ -353,12 +353,6 @@ $("#dl").on("click", () => {
     imgDownload(dataURL);
 });
 const imgDownload = dataURL => {
-    if (canvas.msToBlob) { //for IE
-        const blob = canvas.msToBlob();
-        window.navigator.msSaveBlob(blob, 'download.png');
-        resize();
-        return;
-    };
     const origName = $("#file")[0].files[0].name;
     const a = $("#hideDl")[0];
     a.href = dataURL;
@@ -480,7 +474,7 @@ const valueOut = () => {
     anime({
         targets: ".valueItem",
         translateX: ["0%", "+=1200px"],
-        duration: 900,
+        duration: 1200,
         easing: 'spring(1, 100, 13, 30)'
     });
 };
