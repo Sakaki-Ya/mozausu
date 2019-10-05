@@ -8,7 +8,7 @@ export const script = () => {
      */
     let imgType;
     $("#file").on("change", e => {
-        $("#view, #notImg, #overSize, #footer").hide();
+        $("#view, #notImg, #overSize, #footer").fadeOut();
         reset();
         const file = e.target.files;
         const fileType = file[0].type;

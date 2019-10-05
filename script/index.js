@@ -1,12 +1,11 @@
-// import { fontawesome } from "./fontawesome";
-// import { anime } from "./anime";
 // import { fabric } from "./fabric";
-import { ripple } from "./ripple";
-import { doubletap } from "./doubletap";
-import { script } from "./script";
-// fontawesome();
-// anime();
 // fabric();
+
+import { ripple } from "./ripple";
 ripple();
+
+import { doubletap } from "./doubletap";
 doubletap();
+
+import { script } from "./script";
 script();

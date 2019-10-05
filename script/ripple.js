@@ -1,5 +1,5 @@
 export function ripple() {
-    let ripple, ripples, RippleEffect, loc, cover, coversize, style, x, y, i, num;
+    var ripple, ripples, RippleEffect, loc, cover, coversize, style, x, y, i, num;
     ripples = document.querySelectorAll(".ripple");
     RippleEffect = function (a) {
         ripple = this;
@@ -13,8 +13,8 @@ export function ripple() {
         cover.setAttribute("style", pos);
         cover.setAttribute("class", "rp-effect");
         setTimeout(function () {
-            let list = document.getElementsByClassName("rp-effect");
-            for (let i = list.length - 1; i >= 0; i--) {
+            var list = document.getElementsByClassName("rp-effect");
+            for (var i = list.length - 1; i >= 0; i--) {
                 list[i].parentNode.removeChild(list[i])
             }
         }, 2000)
