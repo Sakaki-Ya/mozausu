@@ -93,9 +93,12 @@ p, button {
 }
 
 #description {
+  font-size: .95em;
   color: rgba(255, 255, 255, 0.87);
   line-height: 2em;
   margin: 2em 0;
+  display: inline-block;
+  text-align: left;
 }
 
 .bold {
@@ -147,7 +150,6 @@ p, button {
 #buttonWrap {
   display: flex;
   justify-content: center;
-  padding-bottom: 2.5%;
 }
 
 i {
@@ -331,29 +333,18 @@ i.icons::before {
   margin: 2%;
 }
 
+#buttonsHowto {
+  margin: .5em 0 1em 0;
+}
+
 #footer {
-  margin: 2%;
   font-family: 'M PLUS 1p', sans-serif;
-}
-
-#footer button, #footer p {
-  margin: .7%;
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.87);
+  margin: 10px 0;
 }
 
-#footer button {
-  font-size: 1em;
-  color: rgba(150, 255, 255, 0.87);
-  transition: color .2s ease-out;
-}
-
-#footer p {
-  font-size: .9em;
-}
-
-#footer button:hover {
-  color: rgba(255, 205, 150, 0.87);
+#footBtns {
+  justify-content: center;
 }
 
 body#inModal .container {
@@ -365,6 +356,7 @@ body#inModal .container {
 #modalArea {
   position: absolute;
   display: flex;
+  text-align: center;
   top: 50vh;
   left: 50vw;
   transform: translate(-50%, -50%);
@@ -424,28 +416,31 @@ body#inModal .container {
   text-align: left;
 }
 
-.closeModals {
+.otherButtons {
   color: rgba(150, 255, 255, 0.87);
   transition: color .2s ease-out;
-  display: flex;
-  margin: auto;
+  display: inline-flex;
   align-items: center;
   white-space: nowrap;
-  margin-top: 1em;
+  margin: 1em 1em 0 1em;
+  font-size: 1em;
 }
 
-.closeModals i {
+.otherButtons p {
+  font-weight: 400;
+}
+
+.otherButtons i {
   color: rgba(0, 207, 235, 0.87);
   transition: color .2s ease-out;
-  font-size: 1.5em;
   margin-right: 10%;
 }
 
-.closeModals:hover {
+.otherButtons:hover {
   color: rgba(255, 205, 150, 0.87);
 }
 
-.closeModals:hover i {
+.otherButtons:hover i {
   color: rgba(255, 100, 43, 0.87);
 }
 
@@ -475,4 +470,10 @@ body#inModal .container {
     opacity: 0;
     transform: scale(2);
   }
+}
+
+#credit {
+  color: rgba(255, 255, 255, 0.87);
+  font-size: .9em;
+  margin-top: 1em;
 }

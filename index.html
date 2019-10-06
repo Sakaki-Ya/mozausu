@@ -11,16 +11,18 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/img/mozausuFav.png">
     <meta name="theme-color" content="#010e14">
     <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c:400,500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/style/bulma.min.css">
-    <link rel="stylesheet" href="/style/bulma-slider.min.css">
+    <!-- <link rel="stylesheet" href="/style/bulma.min.css">
+    <link rel="stylesheet" href="/style/bulma-slider.min.css"> -->
+    <link rel="stylesheet" href="/style/bulmas.css">
     <link rel="stylesheet" href="/style/style.min.css">
-    <script src="/script/fontawesome.js" defer></script>
+    <!-- <script src="/script/fontawesome.js" defer></script>
     <script src="/script/jquery.js" defer></script>
     <script src="/script/anime.js" defer></script>
     <script src="/script/ripple.js" defer></script>
     <script src="/script/fabric.js" defer></script>
-    <script src="/script/doubletap.js" defer></script>
-    <script src="/script/script.js" defer></script>
+    <script src="/script/doubletap.js" defer></script> -->
+    <script src="/script/lib.js" defer></script>
+    <script src="/script/script.min.js" defer></script>
 </head>
 
 <body>
@@ -82,8 +84,8 @@
         <!-- view -->
         <div class="block" id="view">
             <div id="description">
-                <p><span class="bold">範囲指定</span>ボタンを押して、ウスクしたい範囲をクリックして囲ってください。</p>
-                <p><span class="bold">ダブルクリック</span>すると囲った範囲内がウスクなります。</p>
+                <p><span class="bold">範囲指定</span>ボタンを押して、モザイク部分をクリックして囲ってください。</p>
+                <p>囲い終わったら、最後に打った点の上を<span class="bold">ダブルクリック</span>してください。</p>
             </div>
             <!-- canvas -->
             <div class="block" id="cnvArea">
@@ -142,20 +144,32 @@
                         <i class="fas fa-chevron-right fa-3x"></i>
                     </button>
                 </nav>
+                <button class="otherButtons openHowto" id="buttonsHowto">
+                    <i class="fas fa-cog"></i>
+                    <p>使い方</p>
+                </button>
             </div>
         </div>
         <!-- caution -->
         <h2 id="notImg"><i class="fas fa-exclamation-triangle fa-3x"></i>
-            <p class="is-size-5 has-text-white-bis">画像ではありません。</p>
+            <p class="is-size-5 has-text-white-bis">画像ではありません。画像ファイルを選択してください。</p>
         </h2>
         <h2 id="overSize"><i class="fas fa-exclamation-triangle fa-3x"></i>
-            <p class="is-size-5 has-text-white-bis">画像のサイズが大き過ぎます。</p>
+            <p class="is-size-5 has-text-white-bis">画像のサイズが大き過ぎます。1.5MB以下の画像を選択してください。</p>
         </h2>
         <!-- footer -->
         <div id="footer">
-            <button class="footBtn" id="openHowto">使い方</button>
-            <button class="footBtn" id="openPolicy">ポリシー</button>
-            <p>© 2019 モザウス</p>
+            <div id="footBtns">
+                <button class="otherButtons openHowto">
+                    <i class="fas fa-cog"></i>
+                    <p>使い方</p>
+                </button>
+                <button class="otherButtons" id="openPolicy">
+                    <i class="fas fa-file-alt"></i>
+                    <p>ポリシー</p>
+                </button>
+            </div>
+            <p id="credit">© 2019 モザウス</p>
         </div>
     </div>
     <!-- modal -->
@@ -165,7 +179,9 @@
                 <iframe id="video" width="560" height="315" src="" frameborder="0"
                     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" showinfo=0></iframe>
             </div>
-            <button class="closeModals"><i class="far fa-times-circle"></i>閉じる</button>
+            <button class="otherButtons closeModal"><i class="far fa-times-circle"></i>
+                <p>閉じる</p>
+            </button>
         </div>
         <div id="policy">
             <div id="policys">
@@ -176,7 +192,9 @@
                     <p>トラフィックデータは匿名で収集されており、個人を特定するものではありません。</p>
                 </div>
             </div>
-            <button class="closeModals"><i class="far fa-times-circle"></i>閉じる</button>
+            <button class="otherButtons closeModal"><i class="far fa-times-circle"></i>
+                <p>閉じる</p>
+            </button>
         </div>
     </div>
 </body>

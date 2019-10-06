@@ -7,8 +7,7 @@ const canvas = new fabric.Canvas("c");
  */
 let imgType;
 $("#file").on("change", e => {
-    $("#view, #notImg, #overSize, #footer").hide();
-    if ($(".valueItem").is(":visible")) $(".valueItem").hide();
+    $("#view, .valueItem, #notImg, #overSize, #footer").hide();
     reset();
     const file = e.target.files;
     const fileType = file[0].type;
@@ -416,7 +415,7 @@ $("#arrowRight").on("click", () => {
 * モーダルウィンドウ
 */
 let modal = 0;
-$("#openHowto").on("click", () => {
+$(".openHowto").on("click", () => {
     $("#video").prop("src", "https://www.youtube.com/embed/lnz3_87nbqM");
     $("#howto").show();
     $("body").prop("id", "inModal");
@@ -429,7 +428,7 @@ $("#openPolicy").on("click", () => {
     modal = 1;
     modalIn($("#policy")[0]);
 });
-$(".closeModals").on("click", () => {
+$(".closeModal").on("click", () => {
     if ($("#howto").is(":visible")) closeModal($("#howto")[0]);
     if ($("#policy").is(":visible")) closeModal($("#policy")[0]);
 });

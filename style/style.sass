@@ -75,9 +75,12 @@ p, button
   color: rgba(135,190,235,.87)
 
 #description
+ font-size: .95em
  color: rgba(255,255,255,.87)
  line-height: 2em
  margin: 2em 0
+ display: inline-block
+ text-align: left
 
 .bold
  font-size: 1.8em
@@ -117,7 +120,6 @@ p, button
 #buttonWrap
  display: flex
  justify-content: center
- padding-bottom: 2.5%
 
 i
  color: rgba(0,127,185,.87)
@@ -263,24 +265,17 @@ i.icons::before
 .fa-exclamation-triangle
  margin: 2%
 
-// .caution
-//  margin: 5%
+#buttonsHowto
+ margin: .5em 0 1em 0
 
 #footer
- margin: 2%
  font-family: 'M PLUS 1p', sans-serif
- button, p
-  margin: .7%
-  font-weight: 400
-  color: rgba(255,255,255,.87)
- button
-  font-size: 1em
-  color: rgba(150,255,255,.87)
-  transition: color .2s ease-out
- p
-  font-size: .9em
- button:hover
-  color: rgba(255,205,150,.87)
+ font-weight: 400
+ margin: 10px 0
+
+#footBtns
+ justify-content: center
+
 
 body#inModal .container
  pointer-events: none
@@ -290,6 +285,7 @@ body#inModal .container
 #modalArea
  position: absolute
  display: flex
+ text-align: center
  top: 50vh
  left: 50vw
  transform: translate(-50%, -50%)
@@ -339,21 +335,22 @@ body#inModal .container
  display: inline-block
  text-align: left
 
-.closeModals
+.otherButtons
  color: rgba(150,255,255,.87)
  transition: color .2s ease-out
- display: flex
- margin: auto
+ display: inline-flex
  align-items: center
  white-space: nowrap
- margin-top: 1em
+ margin: 1em 1em 0 1em
+ font-size: 1em
+ p
+  font-weight: 400
  i
   color: rgba(0,207,235,.87)
   transition: color .2s ease-out
-  font-size: 1.5em
   margin-right: 10%
 
-.closeModals:hover
+.otherButtons:hover
  color: rgba(255,205,150,.87)
  i
   color: rgba(255,100,43,.87)
@@ -378,3 +375,8 @@ body#inModal .container
  to
   opacity: 0
   transform: scale(2)
+
+#credit
+ color: rgba(255,255,255,.87)
+ font-size: .9em
+ margin-top: 1em
