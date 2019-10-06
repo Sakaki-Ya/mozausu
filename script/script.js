@@ -1,5 +1,4 @@
 const canvas = new fabric.Canvas("c");
-// fabric.textureSize = 4096;
 
 /**
  * 画像ファイル読込
@@ -7,6 +6,7 @@ const canvas = new fabric.Canvas("c");
  */
 let imgType;
 $("#file").on("change", e => {
+    fabric.textureSize = 2048;
     $("#view, .valueItem, #notImg, #overSize, #footer").hide();
     reset();
     const file = e.target.files;
@@ -17,11 +17,12 @@ $("#file").on("change", e => {
         $("#file")[0].value = "";
         return;
     };
-    if (imgSize > 1500000) {
+    if (imgSize > 1700000) {
         $("#overSize").fadeIn();
         $("#file")[0].value = "";
         return;
     };
+    if (imgSize > 1100000) fabric.textureSize = 4096;
     const fr = new FileReader(e);
     fr.onload = (e) => {
         if (fileType.match("image.png")) imgType = "png";
