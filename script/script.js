@@ -280,7 +280,7 @@ canvas.on("mouse:up", () => {
  */
 $("#onOff").on("click", () => {
     const obj = canvas.getObjects();
-    if (!(obj.length === 2)) return;
+    if (obj.length !== 2) return;
     const blurObj = obj[1];
     if ($("#onOff").prop("checked") === true) {
         blurObj.opacity = 0;
