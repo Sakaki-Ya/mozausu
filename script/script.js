@@ -7,7 +7,7 @@ const canvas = new fabric.Canvas("c");
 let imgType;
 $("#file").on("change", e => {
     fabric.textureSize = 2048;
-    $("#view, .valueItem, #notImg, #overSize, #footer").hide();
+    $("#view, #notImg, #overSize, #footer").hide();
     reset();
     const file = e.target.files;
     const fileType = file[0].type;
@@ -144,7 +144,7 @@ const down = e => {
     };
 };
 const move = e => {
-    if (mode == "edit") {
+    if (mode === "edit") {
         const pos = canvas.getPointer(e);
         const points = stroke.get("points");
         points[points.length - 1].x = pos.x;
@@ -301,10 +301,6 @@ const clear = () => {
     reset();
     canvas.add(origImg).renderAll();
     origImg.selectable = false;
-    if ($(".valueItem").is(":visible")) {
-        valueOut();
-        $(".valueItem").fadeOut(1200);
-    };
 };
 
 /**
@@ -325,6 +321,10 @@ const reset = () => {
     canvas.off("mouse:down", down).off("mouse:move", move).off("mouse:dblclick", copyObj);
     $("canvas").off("doubletap", copyObj);
     $("#value").off("input", slide);
+    if ($(".valueItem").is(":visible")) {
+        valueOut();
+        $(".valueItem").fadeOut(1200);
+    };
 };
 
 /**
@@ -365,10 +365,6 @@ const imgDownload = dataURL => {
  * キャンバスを閉じる
  */
 $("#close").on("click", async () => {
-    if ($(".valueItem").is(":visible")) {
-        valueOut();
-        $(".valueItem").fadeOut();
-    };
     await viewOut();
     $("#view").hide();
     reset();
@@ -430,14 +426,20 @@ $("#openPolicy").on("click", () => {
     modalIn($("#policy")[0]);
 });
 $(".closeModal").on("click", () => {
-    if ($("#howto").is(":visible")) closeModal($("#howto")[0]);
+    if ($("#howto").is(":visible")) {
+        closeModal($("#howto")[0]);
+        return;
+    }
     if ($("#policy").is(":visible")) closeModal($("#policy")[0]);
 });
 $(window).on("click", e => {
     if ($(e.target).closest("#modalArea").length) return;
     modal += 1;
     if (modal === 3) {
-        if ($("#howto").is(":visible")) closeModal($("#howto")[0]);
+        if ($("#howto").is(":visible")) {
+            closeModal($("#howto")[0]);
+            return;
+        };
         if ($("#policy").is(":visible")) closeModal($("#policy")[0]);
     };
 });
