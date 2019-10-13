@@ -22,7 +22,7 @@ $("#file").on("change", e => {
         $("#file")[0].value = "";
         return;
     };
-    if (imgSize > 1100000) fabric.textureSize = 4096;
+    if (imgSize > 1000000) fabric.textureSize = 4096;
     const fr = new FileReader(e);
     fr.onload = (e) => {
         if (fileType.match("image.png")) imgType = "png";
@@ -411,45 +411,30 @@ $("#arrowRight").on("click", () => {
 /**
 * モーダルウィンドウ
 */
-let modal = 0;
 $(".openHowto").on("click", () => {
     $("#video").prop("src", "https://www.youtube.com/embed/lnz3_87nbqM");
-    $("#howto").show();
+    if ($("#optPanel").is(":visible")) $("#optPanel").fadeOut(100);
     $("body").prop("id", "inModal");
-    modal = 1;
+    $("#howto").addClass("is-active");
     modalIn($("#howto")[0]);
 });
 $("#openPolicy").on("click", () => {
-    $("#policy").show();
     $("body").prop("id", "inModal");
-    modal = 1;
+    $("#policy").addClass("is-active");
     modalIn($("#policy")[0]);
 });
-$(".closeModal").on("click", () => {
-    if ($("#howto").is(":visible")) {
-        closeModal($("#howto")[0]);
-        return;
-    }
-    if ($("#policy").is(":visible")) closeModal($("#policy")[0]);
-});
-$(window).on("click", e => {
-    if ($(e.target).closest("#modalArea").length) return;
-    modal += 1;
-    if (modal === 3) {
-        if ($("#howto").is(":visible")) {
-            closeModal($("#howto")[0]);
-            return;
-        };
-        if ($("#policy").is(":visible")) closeModal($("#policy")[0]);
-    };
-});
-const closeModal = modalWindow => {
-    modalOut(modalWindow);
-    $(modalWindow).fadeOut(700);
-    $("#video").prop("src", "");
+$(".closeModal, .modal-background").on("click", async () => {
+    let modal;
     $("body").removeAttr("id", "inModal");
-    modal = 0;
-};
+    if ($("#howto").is(":visible")) {
+        $("#video").prop("src", "");
+        modal = $("#howto");
+    };
+    if ($("#policy").is(":visible")) modal = $("#policy");
+    await modalOut(modal[0]);
+    if ($("#view").is(":visible")) $("#optPanel").fadeIn(100);
+    modal.removeClass("is-active");
+});
 
 /**
 * モーショングラフィックス
@@ -492,16 +477,16 @@ const viewOut = () => {
         duration: 250
     }).finished;
 };
-const modalIn = obj => {
+const modalIn = modal => {
     anime({
-        targets: obj,
+        targets: modal,
         translateY: ["-=600px", "0%"],
     });
 };
-const modalOut = obj => {
-    anime({
-        targets: obj,
+const modalOut = modal => {
+    return anime({
+        targets: modal,
         translateY: ["0%", "+=600px"],
         duration: 900
-    });
+    }).finished;
 };

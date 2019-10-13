@@ -81,10 +81,14 @@
         </label>
         <!-- view -->
         <div class="block" id="view">
-            <div id="description">
+            <button id="afterInputHowto" class="otherButtons openHowto">
+                <i class="fas fa-cog"></i>
+                <p>使い方</p>
+            </button>
+            <!-- <div id="description">
                 <p><span class="bold">範囲指定</span>ボタンを押して、モザイク部分をクリックして囲ってください。</p>
                 <p>囲い終わったら、最後に打った点の上を<span class="bold">ダブルクリック</span>してください。</p>
-            </div>
+            </div> -->
             <!-- canvas -->
             <div class="block" id="cnvArea">
                 <canvas id="c"></canvas>
@@ -142,10 +146,6 @@
                         <i class="fas fa-chevron-right fa-3x"></i>
                     </button>
                 </nav>
-                <button class="otherButtons openHowto" id="buttonsHowto">
-                    <i class="fas fa-cog"></i>
-                    <p>使い方</p>
-                </button>
             </div>
         </div>
         <!-- caution -->
@@ -170,29 +170,31 @@
             <p id="credit">© 2019 モザウス</p>
         </div>
     </div>
-    <div id="modalArea">
-        <div id="howto">
-            <div id="youtube">
-                <iframe id="video" width="560" height="315" src="" frameborder="0"
-                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" showinfo=0></iframe>
-            </div>
-            <button class="otherButtons closeModal"><i class="far fa-times-circle"></i>
-                <p>閉じる</p>
-            </button>
+    <div id="howto" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-content" id="howtoContent">
+            <iframe id="video" width="560" height="315" src="" frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" showinfo=0></iframe>
         </div>
-        <div id="policy">
-            <div id="policys">
-                <h2 class="has-text-centered">ポリシー</h2>
-                <h3>アクセス解析ツール</h3>
-                <div id="modalTxt">
-                    <p>モザウスはGoogleAnalyticsを利用しトラフィックデータを収集するためにCookieを使用しています。</p>
-                    <p>トラフィックデータは匿名で収集されており、個人を特定するものではありません。</p>
-                </div>
+        <button class="closeModal otherButtons">
+            <i class="far fa-times-circle"></i>
+            <p>閉じる</p>
+        </button>
+    </div>
+    <div id="policy" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-content" id="policyContent">
+            <h2>ポリシー</h2>
+            <h3>アクセス解析ツール</h3>
+            <div id="policyText">
+                <p>モザウスはGoogleAnalyticsを利用しトラフィックデータを収集するためにCookieを使用しています。</p>
+                <p>トラフィックデータは匿名で収集されており、個人を特定するものではありません。</p>
             </div>
-            <button class="otherButtons closeModal"><i class="far fa-times-circle"></i>
-                <p>閉じる</p>
-            </button>
         </div>
+        <button class="closeModal otherButtons">
+            <i class="far fa-times-circle"></i>
+            <p>閉じる</p>
+        </button>
     </div>
 </body>
 

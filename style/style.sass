@@ -5,6 +5,7 @@ html
  background: linear-gradient(90deg, #010e14, #0a3438, #010e14)
  background-size: 400% 400%
  animation: gradation 20s ease infinite
+ overflow-y: auto
 
 @keyframes gradation
  0%
@@ -74,13 +75,16 @@ p, button
  > div i
   color: rgba(135,190,235,.87)
 
-#description
- font-size: .95em
- color: rgba(255,255,255,.87)
- line-height: 2em
- margin: 2em 0
- display: inline-block
- text-align: left
+#afterInputHowto
+ margin: 1em 0
+
+// #description
+//  font-size: .95em
+//  color: rgba(255,255,255,.87)
+//  line-height: 2em
+//  margin: 2em 0
+//  display: inline-block
+//  text-align: left
 
 .bold
  font-size: 1.8em
@@ -105,7 +109,7 @@ p, button
  width: 65%
  filter: drop-shadow(0 0 .2em rgba(165,205,57,.87))
 
-#file,#view,.valueItem,#select,#onOff,.fas.fa-eye,#hideDl,#notImg,#overSize,#howto,#policy
+#file,#view,.valueItem,#select,#onOff,.fas.fa-eye,#hideDl,#notImg,#overSize
  display: none
 
 #notImg,#overSize
@@ -116,6 +120,7 @@ p, button
  bottom: 0
  left: 0
  width: 100vw
+ margin-bottom: 1.5%
 
 #buttonWrap
  display: flex
@@ -266,7 +271,7 @@ i.icons::before
  margin: 2%
 
 #buttonsHowto
- margin: .5em 0 1em 0
+ margin: 1em 0
 
 #footer
  font-family: 'M PLUS 1p', sans-serif
@@ -276,43 +281,25 @@ i.icons::before
 #footBtns
  justify-content: center
 
-body#inModal .container
- pointer-events: none
- transition: all .2s ease-out
- filter: blur(6px)
+.modal
+ padding: 2em
 
-#modalArea
- position: fixed
- text-align: center
- top: 50vh
- transform: translateY(-50%)
- 
-#howto
- background-color: transparent
- border: none
- box-shadow: 0 0 0 rgba(0,0,0,0)
-
-#youtube
+#howtoContent
  position: relative
- width: 80vw
- padding-top: 56.25%
+ padding-bottom: 56.25%
  box-shadow: 0 0 .6em rgba(32,156,238,1),0 0 .8em rgba(165,205,57,.87)
- 
+
 #video
  position: absolute
- top: 0
- right: 0
  width: 100%
  height: 100%
 
-#policys
+#policyContent
  color: rgba(255,255,255,.87)
- transition: color .2s ease-out
  background-color: rgba(18,18,18,.77)
  box-shadow: 0 0 .6em rgba(32,156,238,1),0 0 .8em rgba(165,205,57,.87)
- width: 100%
- height: 100%
  h2
+  text-align: center
   font-weight: 700
   font-size: 1.3em
   background-color: rgba(0,177,235,.87)
@@ -325,12 +312,22 @@ body#inModal .container
   font-size: 1.1em
   margin-top: 1em
 
-#modalTxt
+#policyText
  font-weight: 400
  line-height: 2.2em
  padding: 1em 2em
  display: inline-block
  text-align: left
+
+body#inModal .container
+ pointer-events: none
+ transition: all .2s ease-out
+ filter: blur(6px)
+
+.modal-background
+ background-color: rgba(255,255,255,0)
+ margin: 0
+ padding: 0
 
 .otherButtons
  color: rgba(150,255,255,.87)
@@ -352,6 +349,11 @@ body#inModal .container
  i
   color: rgba(255,100,43,.87)
 
+#credit
+ color: rgba(255,255,255,.87)
+ font-size: .9em
+ margin-top: 1em
+
 .ripple
  position: relative
  overflow: hidden
@@ -372,8 +374,3 @@ body#inModal .container
  to
   opacity: 0
   transform: scale(2)
-
-#credit
- color: rgba(255,255,255,.87)
- font-size: .9em
- margin-top: 1em

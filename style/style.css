@@ -3,6 +3,7 @@ html {
   background: linear-gradient(90deg, #010e14, #0a3438, #010e14);
   background-size: 400% 400%;
   animation: gradation 20s ease infinite;
+  overflow-y: auto;
 }
 
 @keyframes gradation {
@@ -92,13 +93,8 @@ p, button {
   color: rgba(135, 190, 235, 0.87);
 }
 
-#description {
-  font-size: .95em;
-  color: rgba(255, 255, 255, 0.87);
-  line-height: 2em;
-  margin: 2em 0;
-  display: inline-block;
-  text-align: left;
+#afterInputHowto {
+  margin: 1em 0;
 }
 
 .bold {
@@ -132,7 +128,7 @@ p, button {
   filter: drop-shadow(0 0 0.2em rgba(165, 205, 57, 0.87));
 }
 
-#file, #view, .valueItem, #select, #onOff, .fas.fa-eye, #hideDl, #notImg, #overSize, #howto, #policy {
+#file, #view, .valueItem, #select, #onOff, .fas.fa-eye, #hideDl, #notImg, #overSize {
   display: none;
 }
 
@@ -145,6 +141,7 @@ p, button {
   bottom: 0;
   left: 0;
   width: 100vw;
+  margin-bottom: 1.5%;
 }
 
 #buttonWrap {
@@ -334,7 +331,7 @@ i.icons::before {
 }
 
 #buttonsHowto {
-  margin: .5em 0 1em 0;
+  margin: 1em 0;
 }
 
 #footer {
@@ -347,50 +344,30 @@ i.icons::before {
   justify-content: center;
 }
 
-body#inModal .container {
-  pointer-events: none;
-  transition: all .2s ease-out;
-  filter: blur(6px);
+.modal {
+  padding: 2em;
 }
 
-#modalArea {
-  position: fixed;
-  text-align: center;
-  top: 50vh;
-  transform: translateY(-50%);
-}
-
-#howto {
-  background-color: transparent;
-  border: none;
-  box-shadow: 0 0 0 transparent;
-}
-
-#youtube {
+#howtoContent {
   position: relative;
-  width: 80vw;
-  padding-top: 56.25%;
+  padding-bottom: 56.25%;
   box-shadow: 0 0 0.6em #209cee, 0 0 0.8em rgba(165, 205, 57, 0.87);
 }
 
 #video {
   position: absolute;
-  top: 0;
-  right: 0;
   width: 100%;
   height: 100%;
 }
 
-#policys {
+#policyContent {
   color: rgba(255, 255, 255, 0.87);
-  transition: color .2s ease-out;
   background-color: rgba(18, 18, 18, 0.77);
   box-shadow: 0 0 0.6em #209cee, 0 0 0.8em rgba(165, 205, 57, 0.87);
-  width: 100%;
-  height: 100%;
 }
 
-#policys h2 {
+#policyContent h2 {
+  text-align: center;
   font-weight: 700;
   font-size: 1.3em;
   background-color: rgba(0, 177, 235, 0.87);
@@ -398,7 +375,7 @@ body#inModal .container {
   padding: 2% 0;
 }
 
-#policys h3 {
+#policyContent h3 {
   text-align: center;
   color: rgba(150, 255, 255, 0.87);
   font-weight: 600;
@@ -406,12 +383,24 @@ body#inModal .container {
   margin-top: 1em;
 }
 
-#modalTxt {
+#policyText {
   font-weight: 400;
   line-height: 2.2em;
   padding: 1em 2em;
   display: inline-block;
   text-align: left;
+}
+
+body#inModal .container {
+  pointer-events: none;
+  transition: all .2s ease-out;
+  filter: blur(6px);
+}
+
+.modal-background {
+  background-color: rgba(255, 255, 255, 0);
+  margin: 0;
+  padding: 0;
 }
 
 .otherButtons {
@@ -442,6 +431,12 @@ body#inModal .container {
   color: rgba(255, 100, 43, 0.87);
 }
 
+#credit {
+  color: rgba(255, 255, 255, 0.87);
+  font-size: .9em;
+  margin-top: 1em;
+}
+
 .ripple {
   position: relative;
   overflow: hidden;
@@ -468,10 +463,4 @@ body#inModal .container {
     opacity: 0;
     transform: scale(2);
   }
-}
-
-#credit {
-  color: rgba(255, 255, 255, 0.87);
-  font-size: .9em;
-  margin-top: 1em;
 }
