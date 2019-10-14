@@ -192,7 +192,7 @@ const clippingObj = copy => {
     $("#value")[0].value = 0.25;
     mode = "";
     canvas.hoverCursor = "all-scroll";
-    $(".valueItem").show();
+    $(".valueItem").fadeIn();
     valueIn();
     blurObj(copy);
 };
@@ -321,10 +321,8 @@ const reset = () => {
     canvas.off("mouse:down", down).off("mouse:move", move).off("mouse:dblclick", copyObj);
     $("canvas").off("doubletap", copyObj);
     $("#value").off("input", slide);
-    if ($(".valueItem").is(":visible")) {
-        valueOut();
-        $(".valueItem").fadeOut(1200);
-    };
+    valueOut();
+    $(".valueItem").fadeOut(1200);
 };
 
 /**
@@ -365,9 +363,9 @@ const imgDownload = dataURL => {
  * キャンバスを閉じる
  */
 $("#close").on("click", async () => {
+    reset();
     await viewOut();
     $("#view").hide();
-    reset();
     $("#footer").fadeIn();
     $("#file")[0].value = "";
 });
@@ -412,7 +410,7 @@ $("#arrowRight").on("click", () => {
 * モーダルウィンドウ
 */
 $(".openHowto").on("click", () => {
-    $("#video").prop("src", "https://www.youtube.com/embed/lnz3_87nbqM");
+    $("#video").prop("src", "https://www.youtube.com/embed/wMVCsQZpD2w");
     if ($("#optPanel").is(":visible")) $("#optPanel").fadeOut(100);
     $("body").prop("id", "inModal");
     $("#howto").addClass("is-active");
@@ -480,13 +478,13 @@ const viewOut = () => {
 const modalIn = modal => {
     anime({
         targets: modal,
-        translateY: ["-=600px", "0%"],
+        translateY: ["-=900px", "0%"],
     });
 };
 const modalOut = modal => {
     return anime({
         targets: modal,
-        translateY: ["0%", "+=600px"],
+        translateY: ["0%", "+=900px"],
         duration: 900
     }).finished;
 };
