@@ -1,0 +1,9 @@
+[[redirects]]
+  from = "https://mozausu.netlify.com"
+  to = "https://mozausu.blue"
+  status = 301
+
+[[redirects]]
+  from = "http://mozausu.netlify.com"
+  to = "https://mozausu.blue"
+  status = 301
