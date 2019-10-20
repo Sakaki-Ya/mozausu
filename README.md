@@ -3,8 +3,9 @@
 </div>
 
 ## 概要
-[モザウス](https://mozausu.blue/)
+[モザウス](https://mozausu.blue/)  
 モザウスは、画像に掛かったモザイクに加工を施し、モザイクが薄くなったように錯覚させるツールです。
 
 ## 使い方
-<iframe width="560" height="315" src="https://www.youtube.com/embed/wMVCsQZpD2w" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>  
+[![](https://img.youtube.com/vi/wMVCsQZpD2w/0.jpg)](https://www.youtube.com/watch?v=wMVCsQZpD2w)  
+上の画像をクリックすると、使い方が確認できるYouTubeページにジャンプします。
