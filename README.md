@@ -1,12 +1,10 @@
-モザウスについて
-====
+<div align="center">
+<img src="https://user-images.githubusercontent.com/48976713/67153943-c07ce800-f32d-11e9-8fdf-7d05609204da.jpg" alt="モザウス" title="モザウス">
+</div>
 
 ## 概要
-[モザウス](https://www.mozausu.app/)
-
-モザウスは、画像に掛かったモザイクに加工を施し、モザイクが薄くなったように錯覚させるツールです。  
-モザイクが掛かっていることで損なわれたディティールを取り戻したり、取り戻したように錯覚できます。  
+[モザウス](https://mozausu.blue/)
+モザウスは、画像に掛かったモザイクに加工を施し、モザイクが薄くなったように錯覚させるツールです。
 
 ## 使い方
-[![モザウスの使い方](https://img.youtube.com/vi/lnz3_87nbqM/0.jpg)](https://youtu.be/lnz3_87nbqM)  
-サムネイルをクリックすると、モザウスを使用するにあたっての一連の流れが確認できるYouTube動画のページへ移動します。
+<iframe width="560" height="315" src="https://www.youtube.com/embed/wMVCsQZpD2w" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>  
