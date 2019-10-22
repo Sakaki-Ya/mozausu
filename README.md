@@ -5,7 +5,7 @@
 ## モザウスとは  
 画像に掛かったモザイクに加工を施し、モザイクが薄くなったように錯覚させるツールです。  
 
-<a href=”https://mozausu.blue” target=”_blank”>モザウス</a>
+<a href="https://mozausu.blue/" target="_blank">モザウス</a>
 
 ## 使い方  
 <div align="center">
