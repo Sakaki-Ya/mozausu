@@ -66,19 +66,19 @@ p, button {
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  border-radius: 2.5%;
+  border-radius: 1em;
   max-width: 350px;
   max-height: 200px;
   width: 100%;
   padding: 3%;
-  border: 0.4em solid rgba(0, 177, 235, 0.87);
+  border: 0.4em ridge rgba(0, 177, 235, 0.87);
   transition: border .2s ease-out;
   box-shadow: 0 0 0.4em rgba(165, 205, 57, 0.87);
   background-color: rgba(255, 140, 255, 0.15);
 }
 
 #fileButton:hover {
-  border: solid 0.4em rgba(255, 126, 69, 0.87);
+  border: ridge 0.4em rgba(255, 126, 69, 0.87);
 }
 
 #fileButton:hover > div i {
@@ -86,7 +86,7 @@ p, button {
 }
 
 #fileButton:active {
-  border: solid 0.4em lightskyblue;
+  border: ridge 0.4em lightskyblue;
 }
 
 #fileButton:active > div i {
@@ -371,6 +371,7 @@ i.icons::before {
   color: rgba(255, 255, 255, 0.87);
   background-color: rgba(18, 18, 18, 0.77);
   box-shadow: 0 0 0.6em #209cee, 0 0 0.8em rgba(165, 205, 57, 0.87);
+  border-radius: 1em;
 }
 
 #policyContent h2 {
