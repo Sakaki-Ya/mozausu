@@ -9,7 +9,7 @@
 
 ## 使い方  
 <div align="center">
-<img src="https://user-images.githubusercontent.com/48976713/67154630-c62cfa80-f33a-11e9-866b-39e8070041f1.gif" alt="使い方" title="使い方">
+<img src="https://user-images.githubusercontent.com/48976713/67620957-23e3aa00-f847-11e9-81f9-2be65fe1ea3d.gif" alt="使い方" title="使い方">
 </div>
 
 ***  

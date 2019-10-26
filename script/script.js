@@ -410,7 +410,7 @@ $("#arrowRight").on("click", () => {
 * モーダルウィンドウ
 */
 $(".openHowto").on("click", () => {
-    $("#video").prop("src", "https://www.youtube.com/embed/wMVCsQZpD2w");
+    $("#video").prop("src", "https://www.youtube.com/embed/1GbHbYI_7OQ");
     if ($("#optPanel").is(":visible")) $("#optPanel").fadeOut(100);
     $("body").prop("id", "inModal");
     $("#howto").addClass("is-active");
