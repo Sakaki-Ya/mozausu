@@ -40,7 +40,7 @@
 読み込んだ画像の表示領域を拡大するボタン。  
 
 **縮小**  
-![kakudai](https://user-images.githubusercontent.com/48976713/67253750-5cd0f700-f4b4-11e9-9625-ee28ded1fef5.JPG)  
+![usu](https://user-images.githubusercontent.com/48976713/68175238-e2c86400-ffc3-11e9-8a21-475d9d23c3a5.JPG)  
 読み込んだ画像の表示領域を縮小するボタン。  
 
 **元画像確認**  
