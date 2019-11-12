@@ -336,12 +336,6 @@ i.icons::before {
   margin: 1em 0;
 }
 
-#footer {
-  font-family: 'M PLUS 1p', sans-serif;
-  font-weight: 400;
-  margin: 10px 0;
-}
-
 #footBtns {
   justify-content: center;
 }
@@ -371,7 +365,7 @@ i.icons::before {
   color: rgba(255, 255, 255, 0.87);
   background-color: rgba(18, 18, 18, 0.77);
   box-shadow: 0 0 0.6em #209cee, 0 0 0.8em rgba(165, 205, 57, 0.87);
-  border-radius: 1em;
+  border-radius: .75em;
 }
 
 #policyContent h2 {
