@@ -1,3 +1,4 @@
+@charset "UTF-8";
 html {
   padding: 3% 10%;
   background: linear-gradient(90deg, #010e14, #0a3438, #010e14);
@@ -48,12 +49,15 @@ svg a:hover .svgBlue {
 }
 
 p, button {
-  font-family: 'M PLUS Rounded 1c', sans-serif;
-  font-weight: 500;
+  font-family: 'メイリオ', 'Meiryo';
 }
 
 #inInput {
   display: block;
+}
+
+#inInput p {
+  font-weight: 600;
 }
 
 .fa-images {
@@ -95,12 +99,6 @@ p, button {
 
 #afterInputHowto {
   margin: 1em 0;
-}
-
-.bold {
-  font-size: 1.8em;
-  color: rgba(0, 157, 215, 0.87);
-  margin: 0 .25em;
 }
 
 .canvas-container {
@@ -167,6 +165,7 @@ i {
 
 li p {
   font-size: 1rem;
+  font-weight: 600;
   color: rgba(150, 255, 255, 0.87);
   margin-top: .5em;
   white-space: nowrap;
@@ -370,7 +369,7 @@ i.icons::before {
 
 #policyContent h2 {
   text-align: center;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 1.3em;
   background-color: rgba(0, 177, 235, 0.87);
   width: 100%;
@@ -391,7 +390,6 @@ i.icons::before {
 }
 
 #policyText {
-  font-weight: 400;
   line-height: 2.2em;
   padding: 1em 2em;
   display: inline-block;
@@ -418,10 +416,6 @@ body#inModal .container {
   white-space: nowrap;
   margin: 1em 1em 0 1em;
   font-size: 1em;
-}
-
-.otherButtons p {
-  font-weight: 400;
 }
 
 .otherButtons i {
