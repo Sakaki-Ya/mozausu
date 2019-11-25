@@ -102,10 +102,8 @@ const selectArea = () => {
     canvas.hoverCursor = "crosshair";
     mode = "add";
     canvas.on("mouse:down", down);
-    if (canvas.hoverCursor === "crosshair") {
-        canvas.on("mouse:dblclick", copyObj);
-        $("canvas").on("doubletap", copyObj);
-    };
+    canvas.on("mouse:dblclick", copyObj);
+    $("canvas").on("doubletap", copyObj);
 };
 const down = e => {
     const pos = canvas.getPointer(e);
@@ -185,15 +183,10 @@ const clippingObj = copy => {
         top: (-(copy.height / 2)) + (polygon.top * polyScale)
     });
     copy.clipPath = polygon;
-    canvas.remove(stroke);
-    const circles = canvas.getObjects();
-    for (let i = 1; i < circles.length; i++)
-        canvas.remove(circles[i]);
+    clear();
     $("#select").prop("disabled", true);
+    $("#select").prop("checked", true);
     $("#onOff").prop("disabled", false);
-    $("#value")[0].value = 0.25;
-    mode = "";
-    canvas.hoverCursor = "all-scroll";
     $(".valueItem").fadeIn();
     valueIn();
     blurObj(copy);
