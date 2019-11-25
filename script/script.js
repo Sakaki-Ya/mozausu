@@ -102,8 +102,10 @@ const selectArea = () => {
     canvas.hoverCursor = "crosshair";
     mode = "add";
     canvas.on("mouse:down", down);
-    canvas.on("mouse:dblclick", copyObj);
-    $("canvas").on("doubletap", copyObj);
+    if (canvas.hoverCursor === "crosshair") {
+        canvas.on("mouse:dblclick", copyObj);
+        $("canvas").on("doubletap", copyObj);
+    };
 };
 const down = e => {
     const pos = canvas.getPointer(e);
