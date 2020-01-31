@@ -49,7 +49,7 @@ svg a:hover .svgBlue {
 }
 
 p, button {
-  font-family: 'メイリオ', 'Meiryo';
+  font-family: "Helvetica", "Arial", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic" sans-serif;
 }
 
 #inInput {
