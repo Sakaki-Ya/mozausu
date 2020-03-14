@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+@import "./colors";
+
+.fa-exclamation-triangle {
+  margin: 2%;
+}
+
+#buttonsHowto {
+  margin: 1rem 0;
+}
+
+#footBtns {
+  justify-content: center;
+}
+
+.otherButtons {
+  color: rgba(150, 255, 255, 0.87);
+  transition: color 0.2s;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  margin: 1rem 1rem 0 1rem;
+  font-size: 1rem;
+  &:hover {
+    color: rgba(255, 205, 150, 0.87);
+    i {
+      color: $hover;
+    }
+  }
+  i {
+    color: $main;
+    transition: color 0.2s;
+    margin-right: 10%;
+  }
+}
+
+#credit {
+  color: rgba(255, 255, 255, 0.87);
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}

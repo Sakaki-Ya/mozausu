@@ -1,0 +1,64 @@
+@charset "UTF-8";
+
+@import "./colors";
+
+#inInput {
+  display: block;
+  font-weight: 600;
+}
+
+.fa-images {
+  margin: 2%;
+}
+
+#fileButton {
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  border-radius: 1rem;
+  max-width: 350px;
+  max-height: 200px;
+  width: 100%;
+  padding: 3%;
+  border: 0.4rem ridge $main;
+  box-shadow: 0 0 0.4rem $shadow;
+  background-color: $buttonBack;
+  transition: 0.2s;
+  &:hover {
+    border: ridge 0.4rem $hoverBorder;
+    .fa-images {
+      color: $hover;
+    }
+  }
+  &:active {
+    border: ridge 0.4rem $activeBorder;
+    .fa-images {
+      color: $active;
+    }
+  }
+  .fa-images {
+    transition: 0.2s;
+    color: $icon;
+  }
+}
+
+#afterInputHowto {
+  display: flex;
+  justify-content: center;
+  margin: 1rem auto;
+  padding: 0;
+}
+
+.canvas-container {
+  margin: auto;
+}
+
+#c {
+  box-shadow: $noneBorderShadow;
+}
+
+#cnvArea {
+  margin: 0;
+}

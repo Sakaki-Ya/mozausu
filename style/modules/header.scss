@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+@import "./colors";
+
+#logo {
+  filter: drop-shadow(0 0 0.2rem $shadow);
+  max-width: 450px;
+  width: 100%;
+  height: 50%;
+  opacity: 0.87;
+  margin: auto;
+  &:hover .svgBlue {
+    fill: $hover;
+  }
+  .svgBlue {
+    fill: $main;
+    transition: 0.2s;
+  }
+}
