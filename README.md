@@ -12,7 +12,8 @@
 - [jQuery](https://jquery.com/)
 - 画像の処理（[Fabric.js](http://fabricjs.com/)）
 - アニメーション（[Anime.js](https://animejs.com/)）
-- CSS（[Bulma](https://bulma.io/)）
+- CSSフレームワーク（[Bulma](https://bulma.io/)）
+- SCSSのコンパイルと圧縮（[gulp](https://gulpjs.com/)）
 
 ## 使い方
 
@@ -33,7 +34,7 @@
 ### 3. 画像の上をクリックすると描画されるドットで、モザイクが掛かった部分を囲います。
 
 最後のドットを打つ際にダブルクリック（ダブルタップ）すると、囲った範囲にボカシが掛かります。  
- ![3](https://user-images.githubusercontent.com/48976713/67253372-4629a080-f4b2-11e9-8f49-2db8d0f20659.JPG)
+![3](https://user-images.githubusercontent.com/48976713/67253372-4629a080-f4b2-11e9-8f49-2db8d0f20659.JPG)
 
 ### 4. ボカシ具合を調節するスライダーが表示されるので、任意のボカシ具合を設定してください。
 

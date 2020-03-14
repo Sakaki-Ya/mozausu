@@ -16,7 +16,7 @@ const sassOptions = {
 
 gulp.task("style", () => {
   const src = "./style/style.scss";
-  const dest = "./";
+  const dest = "./style/";
   return gulp
     .src(src)
     .pipe(
