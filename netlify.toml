@@ -1,14 +1,17 @@
 [[redirects]]
+  force = true
   from = "https://mozausu.netlify.com"
   to = "https://mozausu.blue"
   status = 301
 
 [[redirects]]
+  force = true
   from = "http://mozausu.netlify.com"
   to = "https://mozausu.blue"
   status = 301
 
 [[redirects]]
+  force = true
   from = "https://mozausu.blue/index.html"
   to = "https://mozausu.blue"
   status = 301

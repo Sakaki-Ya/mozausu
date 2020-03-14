@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+$main: rgba(0, 177, 235, 0.87);
+$border: rgba(0, 157, 215, 0.87);
+$hover: rgba(255, 100, 43, 0.87);
+$hoverBorder: rgba(255, 126, 69, 0.87);
+$hoverText: rgba(255, 205, 150, 0.87);
+$active: rgba(135, 190, 235, 0.87);
+$activeBorder: rgba(135, 206, 250, 0.87);
+$activeText: rgba(200, 255, 255, 0.87);
+$shadow: rgba(165, 205, 57, 0.87);
+$buttonBack: rgba(255, 140, 255, 0.15);
+$text: rgba(150, 255, 255, 0.87);
+$icon: rgba(0, 127, 185, 0.87);
+$noneBorderShadow: 0 0 0.6rem $icon, 0 0 0.8rem $shadow;
+
+$font: "Helvetica", "Arial", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3",
+  "メイリオ", "Meiryo", "ＭＳ Ｐゴシック", "MS PGothic" sans-serif;

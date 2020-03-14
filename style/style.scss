@@ -1,0 +1,103 @@
+@charset "UTF-8";
+
+@import "./modules/colors";
+
+html {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+body {
+  width: 100vw;
+  min-height: 100vh;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 2rem 10%;
+  background: linear-gradient(90deg, #010e14, #0a3438, #010e14);
+  background-size: 400% 400%;
+  animation: gradation 20s ease infinite;
+  @keyframes gradation {
+    0% {
+      background-position: 0% 4%;
+    }
+    50% {
+      background-position: 100% 97%;
+    }
+    100% {
+      background-position: 0% 4%;
+    }
+  }
+}
+
+button {
+  background: transparent;
+  border: none;
+  outline: none;
+  appearance: none;
+}
+
+button,
+input,
+label {
+  cursor: pointer;
+}
+
+p,
+button {
+  font-family: $font;
+}
+
+#file,
+#view,
+.valueItem,
+#select,
+#onOff,
+.fas.fa-eye,
+#hideDl,
+#notImg,
+#overSize {
+  display: none;
+}
+
+#notImg,
+#overSize {
+  margin: 2.5%;
+}
+
+i {
+  color: $icon;
+  transition: 0.2s;
+}
+
+.ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.rp-effect {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  background: rgba(255, 200, 200, 0.67);
+  pointer-events: none;
+  animation: ripple 600ms;
+  @-webkit-keyframes ripple {
+    to {
+      opacity: 0;
+      transform: scale(2);
+    }
+  }
+
+  @keyframes ripple {
+    to {
+      opacity: 0;
+      transform: scale(2);
+    }
+  }
+}
+
+@import "./modules/header";
+@import "./modules/inputCanvas";
+@import "./modules/optionPanel";
+@import "./modules/footer";
+@import "./modules/modal";
