@@ -7,13 +7,17 @@
 }
 
 #howto {
+  box-sizing: border-box;
+  margin: auto;
   padding: 10%;
+  max-width: 195vh;
 }
 
 #howtoContent {
   position: relative;
+  margin: 0.5rem 0;
   padding-bottom: 56.25%;
-  width: 80vw;
+  width: 100%;
   box-shadow: $noneBorderShadow;
 }
 
@@ -27,6 +31,7 @@
   color: rgba(255, 255, 255, 0.87);
   background-color: rgba(18, 18, 18, 0.77);
   box-shadow: $noneBorderShadow;
+  margin-bottom: 0.5rem;
   border-radius: 0.75rem;
   h2 {
     text-align: center;
