@@ -36,19 +36,14 @@
     />
     <meta property="og:image" content="https://mozausu.blue/img/ogp.jpg" />
 
+    <link rel="manifest" href="/manifest.json" />
     <link rel="canonical" href="https://mozausu.blue" />
-    <link rel="icon" href="img/mozausuFav.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/img/mozausuFav.png" />
+    <link rel="icon" href="img/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/logo.png" />
     <meta name="theme-color" content="#0E9CBB" />
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma-slider@2.0.0/dist/css/bulma-slider.min.css"
-    />
+    <link rel="stylesheet" href="/style/bulma.min.css" />
+    <link rel="stylesheet" href="/style/bulma-slider.min.css" />
     <link
       rel="stylesheet"
       href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.6.3/css/all.min.css"
@@ -60,7 +55,7 @@
     <script src="/script/lib/fabric.js" defer></script>
     <script src="/script/lib/ripple.js" defer></script>
     <script src="/script/lib/doubletap.js" defer></script>
-    <script type="module" src="/script/script.min.js" defer></script>
+    <script src="/script/script.min.js" defer></script>
   </head>
 
   <body>
@@ -319,5 +314,20 @@
         <p>閉じる</p>
       </button>
     </div>
+
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          if ("serviceWorker" in navigator) {
+            navigator.serviceWorker
+              .register("/sw.js")
+              .then(registration =>
+                console.log("success, scope:", registration.scope)
+              )
+              .catch(err => console.warn("failed: ", err));
+          }
+        });
+      }
+    </script>
   </body>
 </html>
