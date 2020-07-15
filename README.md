@@ -9,7 +9,7 @@
 
 ## 使用している主なライブラリやツール
 
-- ホスティング（[Zeit Now](https://zeit.co/)）
+- ホスティング（[vercel](https://vercel.com)）
 - [jQuery](https://jquery.com/)
 - 画像の処理（[Fabric.js](http://fabricjs.com/)）
 - アニメーション（[Anime.js](https://animejs.com/)）
